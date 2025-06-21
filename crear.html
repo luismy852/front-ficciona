@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Autor</title>
+    <link rel="stylesheet" href="style/logeado.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+        </a>
+
+        <button class="boton__header">
+            Explorar
+        </button>
+        <img class="flecha" src="Imagenes/flecha.png" alt="">
+
+        <a class="boton__biblioteca" href="">Biblioteca</a>
+        <textarea class="textarea__header" name="" id=""></textarea>
+        <button class="boton__header">
+            <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+        </button>
+        <button class="boton__header">Escribir</button>
+        <a class="registrarse__header" href="">Mi cuenta</a>
+    </header>
+
+    <main>
+
+        <a href="panel.html">Volver</a>
+
+        <div>
+            <!-- Vista previa de la imagen -->
+            <img id="preview" src="#" alt="Vista previa" style="display:none; max-width: 200px; margin-top: 10px;">
+
+            <form id="creacionNueva">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="DRAMA">Drama</option>
+                    <option value="ROMANCE">Romance</option>
+                    <option value="TERROR">Terror</option>
+                    <option value="CIENCIA_FICCION">Ciencia Ficción</option>
+                    <option value="THRILLER">Thriller</option>
+                </select>
+
+                <label for="imagen">Subir imagen:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+
+                <button type="submit">Crear</button>
+            </form>
+
+        </div>
+
+
+
+        <div class="linea__separadora__contenedor">
+            <hr class="linea__separadora">
+        </div>
+
+
+    </main>
+
+
+    <footer>
+        <div class="footer__links">
+            <a href="">Ayuda</a>
+            <a href="">Sobre nosotros</a>
+            <a href="">Politica de privacidad</a>
+        </div>
+        <div class="footer__texto">
+            <p class="text__footer">Ficciona, plataforma para escribir y compartir historias en base a retos.</p>
+        </div>
+
+        <div class="footer__redes">
+            <img class="footer__iconos" src="Imagenes/instagram.png" alt="">
+            <img class="footer__iconos2" src="Imagenes/tik-tok.png" alt="">
+        </div>
+
+    </footer>
+
+    <script src="js/crearhistoria.js"></script>
+</body>
+
+</html>

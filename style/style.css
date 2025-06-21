@@ -1,0 +1,414 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 1440px;
+    height: 100px;
+    background-color: #493D9E;
+    font-size: 24px;
+    color: white;
+}
+
+#headerLogueado,
+#headerAnonimo {
+    min-height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo__header {
+    width: 65px;
+    height: 65px;
+    margin-right: 25px;
+}
+
+.flecha {
+    width: 23px;
+    height: 23px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.boton__biblioteca {
+    text-decoration: none;
+    margin-right: 60px;
+    color: white;
+}
+
+.boton__header,
+.boton__buscar {
+    all: unset;
+}
+
+.textarea__header {
+    width: 461px;
+    height: 41px;
+    border-radius: 12px;
+    margin-right: 10px;
+    resize: none;
+}
+
+.imagen__lupa {
+    width: 41px;
+    height: 41px;
+    margin-right: 25px;
+}
+
+.registrarse__header {
+    text-decoration: none;
+    color: white;
+    margin-left: 40px;
+}
+
+
+
+.presentacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 67px;
+    padding-bottom: 88px;
+}
+
+.presentacion__texto {
+    font-size: 40px;
+    width: 595px;
+    height: 264px;
+    padding-left: 88px;
+
+}
+
+.botones__presentacion__contenedor {
+    display: flex;
+    justify-content: center;
+    line-height: 77px;
+
+
+}
+
+.botones__presentacion {
+    display: inline-block;
+    width: 300px;
+    height: 77px;
+    background-color: #493D9E;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 32px;
+}
+
+.botones__presentacion2 {
+    display: inline-block;
+    width: 300px;
+    height: 77px;
+    background-color: #493D9E;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 32px;
+    margin-left: 195px;
+}
+
+.linea__separadora__contenedor {
+    display: flex;
+    justify-content: center;
+}
+
+.linea__separadora {
+    margin-top: 40px;
+    width: 1300px;
+    background-color: #493D9E;
+}
+
+
+.secciones {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.titulo__secciones {
+    margin-left: 86px;
+    font-size: 40px;
+}
+
+.enlace__secciones {
+    margin-right: 116px;
+    font-size: 32px;
+    text-decoration: none;
+    color: black;
+}
+
+#galeriaPortadas,
+#galeriaTerror,
+#galeriaRomance,
+#galeriaFantasia {
+    margin-right: 120px;
+    margin-left: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#galeriaGenero {
+    margin-right: 120px;
+    margin-left: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.enlacePortada1 {
+    width: calc(20% - 20px);
+    /* 5 por fila - se resta gap */
+    margin-bottom: 20px;
+}
+
+
+.portada {
+    width: 200px;
+    height: 300px;
+}
+
+
+.footer__links {
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    padding-top: 37px;
+}
+
+.text__footer {
+    text-align: center;
+    font-size: 24px;
+    padding-top: 37px;
+    width: 640px;
+    align-items: center;
+}
+
+.footer__texto {
+    display: flex;
+    justify-content: center;
+}
+
+
+.footer__redes {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.footer__iconos,
+.footer__iconos2 {
+    height: 44px;
+    width: 44px;
+
+}
+
+.footer__iconos2 {
+    margin-left: 20px;
+}
+
+.bienvenida__texto {
+    font-size: 40px;
+    width: 595px;
+    height: 352px;
+    padding-left: 88px;
+}
+
+.registro {
+    text-align: center;
+
+
+
+    label {
+        display: block;
+        font-size: 36px;
+        margin-top: 40px;
+    }
+
+    input {
+        width: 674px;
+        height: 84px;
+        font-size: 24px;
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+
+    button {
+        width: 418px;
+        height: 96px;
+        border-radius: 20px;
+        background-color: #FFF2AF;
+        font-size: 36px;
+        margin-top: 45px;
+    }
+}
+
+
+
+
+
+.panel__historia {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.imagen__panel {
+    width: 301px;
+    height: 452px;
+    margin-right: 54px;
+}
+
+.titulo__panel {
+    font-size: 64px;
+    margin-bottom: 29px;
+}
+
+.descripcion__panel {
+    font-size: 32px;
+    width: 762px;
+}
+
+.capitulos__h2 {
+    display: flex;
+    font-size: 60px;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 90px;
+}
+
+.capitulos__texto {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+.capitulo__contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 140px;
+    margin-right: 140px;
+    margin-top: 40px;
+
+    h3 {
+        font-size: 48px;
+    }
+
+    p {
+        font-size: 24px;
+    }
+
+    img {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+
+
+#tituloHistoria {
+    font-size: 32px;
+    margin-left: 94px;
+    margin-top: 40px;
+}
+
+#tituloCapitulo {
+    text-align: center;
+    font-size: 64px;
+    padding-bottom: 80px;
+}
+
+.contenido__capitulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenidoCapitulo {
+
+    width: 1156px;
+}
+
+
+
+
+.titulo__busqueda {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 20px;
+}
+
+.nueva__historias__autor {
+    display: inline-block;
+    width: 263px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #FFF2AF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+
+.historia__contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: center;
+
+}
+
+.historia__card {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.imagen__historia {
+    width: 200px;
+    height: 300px;
+    margin-right: 60px;
+}
+
+.titulo__historia {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.descripcion__historia {
+    font-size: 24px;
+    width: 792px;
+
+}
+
+.boton1,
+.boton2,
+.boton3 {
+    display: inline-block;
+    width: 205px;
+    height: 58px;
+    line-height: 58px;
+    background-color: #FFF2AF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-right: 60px;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Autor</title>
+    <link rel="stylesheet" href="style/logeado.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+        </a>
+
+        <button class="boton__header">
+            Explorar
+        </button>
+        <img class="flecha" src="Imagenes/flecha.png" alt="">
+
+        <a class="boton__biblioteca" href="">Biblioteca</a>
+        <textarea class="textarea__header" name="" id=""></textarea>
+        <button class="boton__header">
+            <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+        </button>
+        <button class="boton__header">Escribir</button>
+        <a class="registrarse__header" href="">Mi cuenta</a>
+    </header>
+
+    <main>
+
+        <div class="reto">
+            <img class="imagen__reto" src="Imagenes/reto.png" alt="">
+            <div>
+                <h1 class="titulo__reto">Reto de la semana</h1>
+                <p class="texto__reto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore
+                    et dolore magna aliqua.</p>
+                <a class="boton__reto" href="">Partcipar</a>
+            </div>
+        </div>
+
+        <div class="historias__autor">
+            <h2 class="titulo__historias__autor">Mis historias</h2>
+            <a class="nueva__historias__autor" href="crear.html">Nueva Historia</a>
+        </div>
+
+        <div class="historia__contenedor" id="contenedorHistorias">
+
+            <div class="historia__card">
+
+                <img class="imagen__historia" src="Imagenes/portada.png" alt="">
+                <div>
+
+                    <h3 class="titulo__historia">Titulo de la historia</h3>
+                    <p class="descripcion__historia">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod
+                        tempor incididunt ut
+                        labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Quis hendrerit dolor magna eget
+                        est lorem ipsum dolor sit. Volutpat odio facilisis mauris sit amet massa. </p>
+                    <a class="boton1" href="">Ver</a>
+                    <a class="boton2" href="">Editar</a>
+                    <a class="boton3" href="panelhistoria.html?id=${hisoria.id}">Eliminar</a>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="menu__paginacion">
+            <a class="paginacion" href="">Anterior</a>
+            <a class="paginacion" href="">Siguiente</a>
+
+        </div>
+
+
+
+        <div class="linea__separadora__contenedor">
+            <hr class="linea__separadora">
+        </div>
+
+
+    </main>
+
+
+    <footer>
+        <div class="footer__links">
+            <a href="">Ayuda</a>
+            <a href="">Sobre nosotros</a>
+            <a href="">Politica de privacidad</a>
+        </div>
+        <div class="footer__texto">
+            <p class="text__footer">Ficciona, plataforma para escribir y compartir historias en base a retos.</p>
+        </div>
+
+        <div class="footer__redes">
+            <img class="footer__iconos" src="Imagenes/instagram.png" alt="">
+            <img class="footer__iconos2" src="Imagenes/tik-tok.png" alt="">
+        </div>
+
+    </footer>
+
+    <script src="js/cargarhistorias.js"></script>
+
+</body>
+
+</html>

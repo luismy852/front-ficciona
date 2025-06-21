@@ -1,0 +1,375 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 1440px;
+    height: 100px;
+    background-color: #493D9E;
+    font-size: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo__header {
+    width: 65px;
+    height: 65px;
+    margin-left: 21px;
+    margin-right: 100px;
+}
+
+.flecha {
+    width: 23px;
+    height: 23px;
+    margin-left: 10px;
+    margin-right: 37px;
+}
+
+.boton__biblioteca {
+    text-decoration: none;
+    margin-right: 60px;
+    color: white;
+}
+
+.boton__header {
+    all: unset;
+}
+
+.textarea__header {
+    width: 461px;
+    height: 41px;
+    border-radius: 12px;
+    margin-right: 10px;
+    resize: none;
+}
+
+.imagen__lupa {
+    width: 41px;
+    height: 41px;
+    margin-right: 100px;
+}
+
+.registrarse__header {
+    text-decoration: none;
+    color: white;
+    margin-left: 40px;
+}
+
+
+
+.reto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.imagen__reto {
+    width: 226px;
+    height: 226px;
+    margin-right: 55px;
+}
+
+.titulo__reto {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.boton__reto {
+    display: inline-block;
+    width: 540px;
+    height: 55px;
+    line-height: 55px;
+    background-color: #FF8000;
+    color: white;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 20px;
+    margin-left: 34px;
+    margin-top: 20px;
+}
+
+.texto__reto {
+    width: 612px;
+    font-size: 24px;
+}
+
+
+.historias__autor {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 168px;
+    margin-right: 168px;
+
+}
+
+.titulo__historias__autor {
+    font-size: 40px;
+}
+
+.nueva__historias__autor {
+    display: inline-block;
+    width: 263px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #FFF2AF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+
+.historia__contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: center;
+
+}
+
+.historia__card {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.imagen__historia {
+    width: 200px;
+    height: 300px;
+    margin-right: 60px;
+}
+
+.titulo__historia {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.descripcion__historia {
+    font-size: 24px;
+    width: 792px;
+
+}
+
+.boton1,
+.boton2,
+.boton3 {
+    display: inline-block;
+    width: 205px;
+    height: 58px;
+    line-height: 58px;
+    background-color: #FFF2AF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-right: 60px;
+}
+
+
+.menu__paginacion {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 48px;
+}
+
+.paginacion {
+    display: inline-block;
+    width: 143px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #DAD2FF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+
+
+
+
+.footer__links {
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    padding-top: 37px;
+}
+
+.text__footer {
+    text-align: center;
+    font-size: 24px;
+    padding-top: 37px;
+    width: 640px;
+    align-items: center;
+}
+
+.footer__texto {
+    display: flex;
+    justify-content: center;
+}
+
+
+.footer__redes {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.footer__iconos,
+.footer__iconos2 {
+    height: 44px;
+    width: 44px;
+
+}
+
+.footer__iconos2 {
+    margin-left: 20px;
+}
+
+.bienvenida__texto {
+    font-size: 40px;
+    width: 595px;
+    height: 352px;
+    padding-left: 88px;
+}
+
+.registro {
+    text-align: center;
+
+
+
+    label {
+        display: block;
+        font-size: 36px;
+        margin-top: 40px;
+    }
+
+    input {
+        width: 674px;
+        height: 84px;
+        font-size: 24px;
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+
+    button {
+        width: 418px;
+        height: 96px;
+        border-radius: 20px;
+        background-color: #FFF2AF;
+        font-size: 36px;
+        margin-top: 45px;
+    }
+}
+
+
+/*
+seccion entrar por historia al panel
+ */
+
+
+.volver {
+    display: inline-block;
+    font-size: 32px;
+    width: 257px;
+    height: 60px;
+    background-color: #FFF2AF;
+    text-decoration: none;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 60px;
+    margin-top: 30px;
+    margin-left: 130px;
+    margin-bottom: 30px;
+}
+
+.panel__historia {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.imagen__panel {
+    width: 301px;
+    height: 452px;
+    margin-right: 54px;
+}
+
+.titulo__panel {
+    font-size: 64px;
+    margin-bottom: 29px;
+}
+
+.descripcion__panel {
+    font-size: 32px;
+    width: 762px;
+}
+
+.editar__historia {
+    display: inline-block;
+    width: 205px;
+    height: 58px;
+    line-height: 58px;
+    background-color: #FFF2AF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-right: 60px;
+}
+
+.capitulos__h2 {
+    display: flex;
+    font-size: 60px;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 90px;
+}
+
+.capitulos__texto {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.añadir {
+    position: absolute;
+    right: 0;
+}
+
+.capitulo__contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 140px;
+    margin-right: 140px;
+    margin-top: 40px;
+
+    h3 {
+        font-size: 48px;
+    }
+
+    p {
+        font-size: 24px;
+    }
+
+    img {
+        width: 75px;
+        height: 75px;
+    }
+}

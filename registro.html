@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+        </a>
+
+        <button class="boton__header">
+            Explorar
+        </button>
+        <img class="flecha" src="Imagenes/flecha.png" alt="">
+        <textarea class="textarea__header" name="" id=""></textarea>
+        <button class="boton__header">
+            <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+        </button>
+        <button class="boton__header">Iniciar Sesion</button>
+        <a class="registrarse__header" href="">Registrarse</a>
+    </header>
+
+    <main>
+        <div class="presentacion">
+            <img src="Imagenes/Ficciona.png" alt="">
+            <p class="bienvenida__texto">¡Bienvenido a <strong>Ficciona!</strong>
+                Estás a un paso de unirte a nuestra comunidad de escritores y lectores. Comparte tus historias,
+                participa en retos y explora un mundo de imaginación sin límites. ¡Regístrate y comienza tu aventura!
+            </p>
+        </div>
+
+        <div class="linea__separadora__contenedor">
+            <hr class="linea__separadora">
+        </div>
+
+        <form class="registro" id="registroForm">
+
+            <label for="email">Correo:</label>
+            <input type="email" id="email" required>
+
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" required>
+
+            <label for="repetirPassword">Repetir contraseña:</label>
+            <input type="password" id="repetirPassword" required>
+
+
+
+
+
+            <p>Al registrarte aceptas las condiciones de servicio</p>
+
+            <p id="errorMensaje" class="error"></p>
+
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <div class="linea__separadora__contenedor">
+            <hr class="linea__separadora">
+        </div>
+
+
+    </main>
+
+
+    <footer>
+        <div class="footer__links">
+            <a href="">Ayuda</a>
+            <a href="">Sobre nosotros</a>
+            <a href="">Politica de privacidad</a>
+        </div>
+        <div class="footer__texto">
+            <p class="text__footer">Ficciona, plataforma para escribir y compartir historias en base a retos.</p>
+        </div>
+
+        <div class="footer__redes">
+            <img class="footer__iconos" src="Imagenes/instagram.png" alt="">
+            <img class="footer__iconos2" src="Imagenes/tik-tok.png" alt="">
+        </div>
+
+    </footer>
+
+    <script src="js/registro.js"></script>
+</body>
+
+</html>
