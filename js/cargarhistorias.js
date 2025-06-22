@@ -15,6 +15,7 @@ fetch("https://api.ficciona.co/historia/" + localStorage.getItem("idUsuario"))
             if (historia.portada) {
                 const nombreArchivo = historia.portada.split("\\").pop();
                 img.src = "https://api.ficciona.co/uploads/" + historia.portada;
+                console.log("Imagen cargada:", img.src);
 
             } else {
                 img.src = "Imagenes/portada.png";
