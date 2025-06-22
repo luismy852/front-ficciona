@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    fetch(`http://localhost:8080/progreso/${usuarioId}`, {
+    fetch(`https://api.ficciona.co/progreso/${usuarioId}`, {
         headers: {
             Authorization: token
         }
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const img = document.createElement("img");
                 const nombreArchivo = item.portada.split("\\").pop(); // corregir la ruta
-                img.src = `http://localhost:8080/uploads/${nombreArchivo}`;
+                img.src = `https://api.ficciona.co/uploads/${nombreArchivo}`;
                 img.alt = item.tituloHistoria;
                 img.classList.add("portada");
 

@@ -28,7 +28,7 @@ formulario.addEventListener('submit', (e) => {
         contenido: contenido
     };
 
-    fetch("http://localhost:8080/capitulo/crear", {
+    fetch("https://api.ficciona.co/capitulo/crear", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

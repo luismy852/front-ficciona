@@ -11,7 +11,7 @@ enlace.href = `editar.html?id=${idHistoria}`;
 
 
 if (historiaId) {
-    fetch(`http://localhost:8080/historia/porid/${historiaId}`)
+    fetch(`https://api.ficciona.co/historia/porid/${historiaId}`)
         .then(response => response.json())
         .then(data => {
             // 2. Rellenar la información de la historia
@@ -24,7 +24,7 @@ if (historiaId) {
             const img = document.querySelector(".imagen__panel");
             if (data.portada) {
                 const nombreArchivo = data.portada.split("\\").pop();
-                img.src = `http://localhost:8080/uploads/${nombreArchivo}`;
+                img.src = `https://api.ficciona.co/uploads/${nombreArchivo}`;
             }
 
             // 3. Mostrar capítulos
@@ -53,7 +53,7 @@ if (historiaId) {
                         const confirmar = confirm("⚠️ Esta acción eliminará el capítulo PERMANENTEMENTE. ¿Deseas continuar?");
                         if (!confirmar) return;
 
-                        fetch(`http://localhost:8080/capitulo/${capituloId}`, {
+                        fetch(`https://api.ficciona.co/capitulo/${capituloId}`, {
                             method: "DELETE"
                         })
                             .then(res => {

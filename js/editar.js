@@ -28,7 +28,7 @@ tinymce.init({
 
 // 3. Obtener los datos del capítulo
 if (capituloId) {
-    fetch(`http://localhost:8080/capitulo/${capituloId}`)
+    fetch(`https://api.ficciona.co/capitulo/${capituloId}`)
         .then(response => {
             if (!response.ok) throw new Error("Error al obtener el capítulo");
             return response.json();
@@ -69,7 +69,7 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
         contenido: contenido
     };
 
-    fetch("http://localhost:8080/capitulo/actualizar", {
+    fetch("https://api.ficciona.co/capitulo/actualizar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -81,7 +81,7 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
                 throw new Error("Error al actualizar el capítulo");
             }
             alert("✅ Capítulo actualizado con éxito");
-            window.location.href = `http://127.0.0.1:5500/panelhistoria.html?id=${historiaId}`;
+            window.location.href = `http://ficciona.co/panelhistoria.html?id=${historiaId}`;
 
         })
         .catch(err => {

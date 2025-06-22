@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             enlace.classList.add("enlacePortada");
 
             const img = document.createElement("img");
-            img.src = `http://localhost:8080/uploads/${nombreArchivo}`;
+            img.src = `https://api.ficciona.co/uploads/${nombreArchivo}`;
             img.alt = historia.titulo;
             img.classList.add("portada");
 

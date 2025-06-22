@@ -1,4 +1,4 @@
-fetch("http://localhost:8080/historia/" + localStorage.getItem("idUsuario"))
+fetch("https://api.ficciona.co/historia/" + localStorage.getItem("idUsuario"))
     .then(response => response.json())
     .then(data => {
         const contenedor = document.getElementById("contenedorHistorias");
@@ -14,7 +14,7 @@ fetch("http://localhost:8080/historia/" + localStorage.getItem("idUsuario"))
 
             if (historia.portada) {
                 const nombreArchivo = historia.portada.split("\\").pop();
-                img.src = "http://localhost:8080/uploads/" + nombreArchivo;
+                img.src = "https://api.ficciona.co/uploads/" + nombreArchivo;
             } else {
                 img.src = "Imagenes/portada.png";
             }

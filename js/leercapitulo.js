@@ -7,7 +7,7 @@ let progresoGuardado = 0;
 let scrollTimeout = null;
 
 // 👉 1. Cargar el capítulo
-fetch(`http://localhost:8080/capitulo/${capituloId}`)
+fetch(`https://api.ficciona.co/capitulo/${capituloId}`)
     .then(res => res.json())
     .then(data => {
         console.log("📘 Capítulo cargado:", data);
@@ -22,7 +22,7 @@ fetch(`http://localhost:8080/capitulo/${capituloId}`)
         const usuarioId = localStorage.getItem("idUsuario");
 
         if (usuarioId && historiaId) {
-            fetch(`http://localhost:8080/progreso/${usuarioId}/${historiaId}`)
+            fetch(`https://api.ficciona.co/progreso/${usuarioId}/${historiaId}`)
                 .then(res => {
                     if (!res.ok) throw new Error("No se pudo obtener el progreso");
                     return res.json();
@@ -94,7 +94,7 @@ document.addEventListener("scroll", () => {
         };
 
         // Enviar al backend
-        fetch('http://localhost:8080/progreso', {
+        fetch('https://api.ficciona.co/progreso', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!historiaId || isNaN(capituloActualId)) return;
 
     // Obtener lista de IDs ordenados
-    fetch(`http://localhost:8080/capitulo/lista/${historiaId}`)
+    fetch(`https://api.ficciona.co/capitulo/lista/${historiaId}`)
         .then(res => res.json())
         .then(listaIds => {
             console.log("🧾 Lista de capítulos:", listaIds);

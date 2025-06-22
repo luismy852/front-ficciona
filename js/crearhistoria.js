@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         formData.append("json", JSON.stringify(jsonData));
 
-        fetch("http://localhost:8080/historia/crear", {
+        fetch("https://api.ficciona.co/historia/crear", {
             method: "POST",
             body: formData,
             headers: {

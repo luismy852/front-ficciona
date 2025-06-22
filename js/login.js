@@ -10,7 +10,7 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     };
 
     try {
-        const respuesta = await fetch("http://localhost:8080/login", {
+        const respuesta = await fetch("https://api.ficciona.co/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
