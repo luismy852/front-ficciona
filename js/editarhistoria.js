@@ -1,0 +1,87 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const historiaId = params.get("id");
+
+    if (!historiaId) {
+        alert("❌ ID de historia no encontrado en la URL.");
+        return;
+    }
+
+    fetch(`http://localhost:8080/historia/porid/${historiaId}`)
+        .then(res => {
+            if (!res.ok) throw new Error("No se pudo obtener la historia.");
+            return res.json();
+        })
+        .then(data => {
+            // 📝 Rellenar campos del formulario
+            document.getElementById("titulo").value = data.titulo;
+            document.getElementById("descripcion").value = data.descripcion;
+            document.getElementById("categoria").value = data.genero;
+
+            // 🖼️ Mostrar portada si existe
+            if (data.portada) {
+                const nombreArchivo = data.portada.split("\\").pop(); // Windows path
+                const rutaCompleta = `http://localhost:8080/uploads/${nombreArchivo}`;
+
+                const preview = document.getElementById("preview");
+                preview.src = rutaCompleta;
+                preview.style.display = "block";
+            }
+
+            // Guardar el ID en el formulario si necesitas usarlo en el envío
+            document.getElementById("creacionNueva").dataset.historiaId = data.id;
+        })
+        .catch(err => {
+            console.error("❌ Error al cargar historia:", err.message);
+            alert("No se pudo cargar la historia.");
+        });
+});
+
+const form = document.getElementById("creacionNueva");
+const imagenInput = document.getElementById("imagen");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById("titulo").value;
+    const descripcion = document.getElementById("descripcion").value;
+    const genero = document.getElementById("categoria").value;
+    const imagen = imagenInput.files[0];
+    const historiaId = new URLSearchParams(window.location.search).get("id");
+
+    const jsonData = {
+        id: parseInt(historiaId),
+        titulo: titulo,
+        descripcion: descripcion,
+        genero: genero,
+        publicado: true // o false, según tu lógica
+    };
+
+    const formData = new FormData();
+
+    if (imagen) {
+        formData.append("file", imagen);
+    } else {
+        // Enviar un archivo vacío para evitar error en el backend si esperas "file"
+        formData.append("file", new Blob());
+    }
+
+    formData.append("json", JSON.stringify(jsonData));
+
+    fetch("http://localhost:8080/historia/actualizar", {
+        method: "POST",
+        body: formData
+    })
+        .then(res => {
+            if (!res.ok) throw new Error("No se pudo actualizar");
+            return res.text();
+        })
+        .then(() => {
+            alert("✅ Historia actualizada correctamente.");
+            window.location.href = `panelhistoria.html?id=${historiaId}`;
+        })
+        .catch(err => {
+            console.error("❌ Error al actualizar:", err.message);
+            alert("❌ Error al actualizar la historia.");
+        });
+});

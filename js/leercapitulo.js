@@ -19,7 +19,6 @@ fetch(`http://localhost:8080/capitulo/${capituloId}`)
         document.getElementById("linkSiguiente").href = `leer.html?id=${historiaId}&capitulo=${parseInt(capituloId) + 1}`;
 
         // 👉 Cargar progreso después de que el contenido ya se insertó
-
         const usuarioId = localStorage.getItem("idUsuario");
 
         if (usuarioId && historiaId) {
@@ -30,16 +29,21 @@ fetch(`http://localhost:8080/capitulo/${capituloId}`)
                 })
                 .then(progresoData => {
                     const progreso = progresoData.progreso;
-                    const scrollMax = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const posicionScroll = Math.floor((progreso / 100) * scrollMax);
+                    const capituloGuardado = progresoData.capituloId;
 
-                    console.log(`📜 Aplicando scroll al ${progreso}% (${posicionScroll}px)`);
+                    // 👇 Solo hacer scroll si el capítulo guardado es el mismo que el actual
+                    if (parseInt(capituloGuardado) === parseInt(capituloId)) {
+                        const scrollMax = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                        const posicionScroll = Math.floor((progreso / 100) * scrollMax);
 
+                        console.log(`📜 Aplicando scroll al ${progreso}% (${posicionScroll}px)`);
 
-
-                    setTimeout(() => {
-                        window.scrollTo({ top: posicionScroll, behavior: "smooth" });
-                    }, 200); // Espera corta por si el contenido aún se está renderizando
+                        setTimeout(() => {
+                            window.scrollTo({ top: posicionScroll, behavior: "smooth" });
+                        }, 200); // Espera corta por si el contenido aún se está renderizando
+                    } else {
+                        console.log("📌 Progreso es de otro capítulo. No se aplica scroll.");
+                    }
                 })
                 .catch(err => {
                     console.warn("⚠️ No se pudo recuperar el progreso:", err.message);
@@ -47,8 +51,6 @@ fetch(`http://localhost:8080/capitulo/${capituloId}`)
         }
     })
     .catch(err => console.error("❌ Error al cargar capítulo:", err));
-
-
 
 
 

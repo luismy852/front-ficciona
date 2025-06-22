@@ -7,6 +7,9 @@ const enlace = document.querySelector("a.añadir");
 enlace.href = `editar.html?id=${idHistoria}`;
 
 
+
+
+
 if (historiaId) {
     fetch(`http://localhost:8080/historia/porid/${historiaId}`)
         .then(response => response.json())
@@ -14,6 +17,8 @@ if (historiaId) {
             // 2. Rellenar la información de la historia
             document.querySelector(".titulo__panel").textContent = data.titulo;
             document.querySelector(".descripcion__panel").textContent = data.descripcion;
+            document.querySelector(".editar__historia").href = `editarhistoria.html?id=${data.id}`;
+
 
             // Si hay portada, mostrarla
             const img = document.querySelector(".imagen__panel");
@@ -34,12 +39,33 @@ if (historiaId) {
                         <p>Estado: ${capitulo.publicado ? "Publicado" : "Borrador"} - ${capitulo.fechaPublicado}</p>
                     </div>
                     <div>
-                        <a href="#"><img src="Imagenes/editar.png" alt=""></a>
-                        <a href="#"><img src="Imagenes/borrar.png" alt=""></a>
+                        <a href="editar1.html?id=${capitulo.id}&historia=${historiaId}"><img src="Imagenes/editar.png" alt=""></a>
+                        <a href="#" class="btn-borrar" data-id="${capitulo.id}"><img src="Imagenes/borrar.png" alt=""></a>
                     </div>
                 `;
                 div.classList.add("capitulo__contenedor");
                 contenedorCapitulos.parentNode.appendChild(div);
+                document.querySelectorAll(".btn-borrar").forEach(boton => {
+                    boton.addEventListener("click", function (e) {
+                        e.preventDefault();
+
+                        const capituloId = this.dataset.id;
+                        const confirmar = confirm("⚠️ Esta acción eliminará el capítulo PERMANENTEMENTE. ¿Deseas continuar?");
+                        if (!confirmar) return;
+
+                        fetch(`http://localhost:8080/capitulo/${capituloId}`, {
+                            method: "DELETE"
+                        })
+                            .then(res => {
+                                if (!res.ok) throw new Error("No se pudo borrar el capítulo");
+                                alert("✅ Capítulo eliminado correctamente.");
+                                location.reload(); // Recarga la página para reflejar el cambio
+                            })
+                            .catch(err => {
+                                alert("❌ Error al borrar capítulo: " + err.message);
+                            });
+                    });
+                });
             });
         })
         .catch(error => {
@@ -48,3 +74,6 @@ if (historiaId) {
 } else {
     console.error("No se encontró el ID en la URL.");
 }
+
+
+

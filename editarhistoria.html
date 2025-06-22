@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Panel de Autor</title>
     <link rel="stylesheet" href="style/logeado.css">
 </head>
 
@@ -29,8 +29,46 @@
     </header>
 
     <main>
-        <h2>Seguir Lecturas</h2>
+
+        <a href="panel.html">Volver</a>
+
+        <div>
+            <!-- Vista previa de la imagen -->
+            <img id="preview" src="#" alt="Vista previa" style="display:none; max-width: 200px; margin-top: 10px;">
+
+            <form id="creacionNueva">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="DRAMA">Drama</option>
+                    <option value="ROMANCE">Romance</option>
+                    <option value="TERROR">Terror</option>
+                    <option value="CIENCIA_FICCION">Ciencia Ficción</option>
+                    <option value="THRILLER">Thriller</option>
+                </select>
+
+                <label for="imagen">Subir imagen:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+
+                <button type="submit">Crear</button>
+            </form>
+
+        </div>
+
+
+
+        <div class="linea__separadora__contenedor">
+            <hr class="linea__separadora">
+        </div>
+
+
     </main>
+
 
     <footer>
         <div class="footer__links">
@@ -49,7 +87,7 @@
 
     </footer>
 
-    <script src="js/biblioteca.js"></script>
+    <script src="js/editarhistoria.js"></script>
 </body>
 
 </html>
