@@ -529,6 +529,22 @@ header {
         display: none;
     }
 
+    .registro {
+        input {
+            width: 90%;
+        }
+
+        button {
+            width: 90%;
+        }
+    }
+
+    .bienvenida__texto {
+        padding-left: 0px;
+        width: 90%;
+        height: auto;
+        text-align: center;
+    }
 }
 
 @media (max-width: 650px) {

@@ -10,20 +10,63 @@
 
 <body>
     <header>
-        <a href="index.html">
-            <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
-        </a>
+        <div id="headerLogueado" style="display: none;">
+            <a href="index.html">
+                <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+            </a>
 
-        <button class="boton__header">
-            Explorar
-        </button>
-        <img class="flecha" src="Imagenes/flecha.png" alt="">
-        <textarea class="textarea__header" name="" id=""></textarea>
-        <button class="boton__header">
-            <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
-        </button>
-        <button class="boton__header">Iniciar Sesion</button>
-        <a class="registrarse__header" href="">Registrarse</a>
+            <a class="boton__header" href="explorar.html">
+                Explorar
+            </a>
+            <img class="flecha" src="Imagenes/flecha.png" alt="">
+
+            <a class="boton__biblioteca" href="biblioteca.html">Biblioteca</a>
+            <textarea class="textarea__header" name="" id=""></textarea>
+            <button class="boton__buscar">
+                <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+            </button>
+            <a class="boton__header" href="panel.html">Escribir</a>
+            <a class="registrarse__header" href="">Mi cuenta</a>
+            <button id="menuToggleLogueado" class="menu__toggle">☰</button>
+        </div>
+
+        <div id="headerAnonimo" style="display: none;">
+            <a href="index.html">
+                <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+            </a>
+
+            <a class="boton__header" href="explorar.html">
+                Explorar
+            </a>
+            <img class="flecha" src="Imagenes/flecha.png" alt="">
+            <textarea class="textarea__header" name=""></textarea>
+            <button class="boton__buscar" id="">
+                <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+            </button>
+            <a class="boton__header" href="login.html">Iniciar Sesion</a>
+            <a class="registrarse__header" href="registro.html">Registrarse</a>
+            <button id="menuToggleAnonimo" class="menu__toggle">☰</button>
+        </div>
+
+
+        <!-- Botón hamburguesa visible solo en móvil -->
+
+
+        <div id="menuMovilLogueado" class="menu-movil">
+            <a href="explorar.html">Explorar</a>
+            <a href="panel.html">Escribir</a>
+            <a href="biblioteca.html">Biblioteca</a>
+            <a href="perfil.html">Mi cuenta</a>
+            <button id="cerrarSesionBtn">Cerrar sesión</button>
+        </div>
+
+        <div id="menuMovilAnonimo" class="menu-movil">
+            <a href="explorar.html">Explorar</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="registro.html">Registrarse</a>
+        </div>
+
+
     </header>
 
     <main>
