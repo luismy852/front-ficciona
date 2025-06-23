@@ -474,6 +474,41 @@ seccion entrar por historia al panel
     }
 }
 
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo__editor {
+    margin-top: 50px;
+    width: 90%;
+}
+
+#titulo {
+    width: 90%;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.contenedor__boton {
+    display: flex;
+    justify-content: center;
+}
+
+.boton__capitulo {
+    width: 50%;
+    height: 50px;
+    background-color: #FF8000;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+
 @media (max-width: 1200px) {
     .boton__header {
         display: none;
@@ -553,6 +588,16 @@ seccion entrar por historia al panel
             }
 
         }
+    }
+
+    .capitulo__contenedor {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .titulo__panel,
+    .descripcion__panel {
+        width: 100%;
     }
 }
 
@@ -648,14 +693,50 @@ seccion entrar por historia al panel
         flex-direction: column;
         align-items: center;
     }
+
+    .panel__historia {
+        flex-direction: column;
+        align-items: center;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .imagen__panel {
+        margin-right: 0px;
+    }
+
+    .titulo__panel {
+        text-align: center;
+    }
+
+    .descripcion__panel {
+        width: 90%;
+    }
+
+    .añadir {
+        margin-left: 30%;
+    }
+
+    .editar__historia {
+        margin-right: 0px;
+    }
 }
 
 @media (max-width: 650px) {
+
+    .card__contenido {
+        width: 100%;
+    }
 
     .historia__card {
         flex-direction: column;
         align-items: center;
     }
+
 
     .descripcion__historia {
         width: 95%;
@@ -709,6 +790,40 @@ seccion entrar por historia al panel
     .descripcion__panel {
         width: 90%;
     }
+
+    .añadir {
+        margin-left: 10%;
+    }
+
+    .capitulo__contenedor {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
 }
 
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+    .añadir {
+        margin-left: 5%;
+    }
+
+    .capitulos__h2 {
+        padding-bottom: 10px;
+
+    }
+
+    .capitulos__texto {
+        font-size: 45px;
+    }
+
+    .capitulo__contenedor {
+
+        h3 {
+            font-size: 32px;
+        }
+
+        img {
+            width: 48px;
+            height: 48px;
+        }
+    }
+}

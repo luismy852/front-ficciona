@@ -1,5 +1,56 @@
 import { API_URL } from "./config.js";
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtén los toggles y los menús móviles por separado
+    const menuToggleLogueado = document.getElementById("menuToggleLogueado");
+    const menuMovilLogueado = document.getElementById("menuMovilLogueado");
+
+    if (menuToggleLogueado && menuMovilLogueado) {
+        menuToggleLogueado.addEventListener("click", () => {
+            menuMovilLogueado.classList.toggle("activo");
+        });
+    }
+
+    const btnCerrar = document.getElementById("cerrarSesionBtn");
+    if (btnCerrar) {
+        btnCerrar.addEventListener("click", () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("idUsuario");
+            window.location.reload();
+        });
+    }
+});
+
+
+//busqueda
+
+document.addEventListener("DOMContentLoaded", function () {
+    const campos = document.querySelectorAll(".textarea__header");
+    const botones = document.querySelectorAll(".boton__buscar");
+
+    // Suponiendo que cada campo tiene su botón correspondiente en el mismo orden
+    campos.forEach((campo, index) => {
+        const boton = botones[index];
+
+        if (boton) {
+            boton.addEventListener("click", function () {
+                const termino = campo.value.trim();
+                if (termino !== "") {
+                    window.location.href = `busqueda.html?query=${encodeURIComponent(termino)}`;
+                }
+            });
+
+            campo.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    boton.click();
+                }
+            });
+        }
+    });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const usuarioId = localStorage.getItem("idUsuario");
     const token = localStorage.getItem("token");

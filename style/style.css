@@ -482,6 +482,14 @@ header {
         width: 100%;
         margin-right: 0px;
     }
+
+    .contenedor__panel {
+        width: 60%;
+    }
+
+    .descripcion__panel {
+        width: 100%;
+    }
 }
 
 @media (max-width: 850px) {
@@ -566,7 +574,6 @@ header {
     }
 
 
-
 }
 
 @media (max-width: 650px) {
@@ -618,13 +625,23 @@ header {
         margin-right: 0px;
     }
 
+    .contenedor__panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+
+
     .titulo__panel {
-        width: 90%;
+        width: 100%;
         text-align: center;
     }
 
     .descripcion__panel {
-        width: 90%;
+        width: 100%;
+        text-align: center;
     }
 
     .capitulo__contenedor {

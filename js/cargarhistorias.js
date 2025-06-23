@@ -79,6 +79,7 @@ fetch(API_URL + "/historia/" + localStorage.getItem("idUsuario"))
 
             // Contenido de texto
             const contenido = document.createElement("div");
+            contenido.classList.add("card__contenido");
 
             const h3 = document.createElement("h3");
             h3.classList.add("titulo__historia");

@@ -5,24 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="style/logeado.css">
 
     <title>Editor</title>
 </head>
 
 <body>
     <header>
+        <div id="headerLogueado">
+            <a href=" index.html">
+                <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+            </a>
+
+            <a class="boton__header" href="explorar.html">
+                Explorar
+            </a>
+            <img class="flecha" src="Imagenes/flecha.png" alt="">
+
+            <a class="boton__biblioteca" href="biblioteca.html">Biblioteca</a>
+            <textarea class="textarea__header" name="" id=""></textarea>
+            <button class="boton__buscar">
+                <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+            </button>
+            <a class="boton__header" href="panel.html">Escribir</a>
+            <a class="registrarse__header" href="">Mi cuenta</a>
+            <button id="menuToggleLogueado" class="menu__toggle">☰</button>
+        </div>
+        <!-- Botón hamburguesa visible solo en móvil -->
+
+
+        <div id="menuMovilLogueado" class="menu-movil">
+            <a href="explorar.html">Explorar</a>
+            <a href="panel.html">Escribir</a>
+            <a href="biblioteca.html">Biblioteca</a>
+            <a href="perfil.html">Mi cuenta</a>
+            <button id="cerrarSesionBtn">Cerrar sesión</button>
+        </div>
 
     </header>
 
     <main>
         <div class="contenedor">
             <div class="hero">
-                <h1>Titulo</h1>
+                <h1 class="titulo__editor">Titulo</h1>
                 <textarea id="titulo"></textarea>
             </div>
             <form id="formulario" class="formulario">
-                <textarea id="editor">Este es un editor genial.</textarea>
-                <button type="submit">Enviar</button>
+                <textarea id="editor"></textarea>
+                <div class="contenedor__boton">
+                    <button class="boton__capitulo" type="submit">Publicar</button>
+                </div>
+
             </form>
         </div>
     </main>
