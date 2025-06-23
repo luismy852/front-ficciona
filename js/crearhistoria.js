@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("creacionNueva");
     const imagenInput = document.getElementById("imagen");
@@ -46,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         formData.append("json", JSON.stringify(jsonData));
 
-        fetch("https://api.ficciona.co/historia/crear", {
+        fetch(API_URL + "/historia/crear", {
             method: "POST",
             body: formData,
             headers: {

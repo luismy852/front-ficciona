@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     const historiaId = params.get("id");
@@ -7,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    fetch(`https://api.ficciona.co/historia/porid/${historiaId}`)
+    fetch(API_URL + `/historia/porid/${historiaId}`)
         .then(res => {
             if (!res.ok) throw new Error("No se pudo obtener la historia.");
             return res.json();
@@ -21,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 🖼️ Mostrar portada si existe
             if (data.portada) {
                 const nombreArchivo = data.portada.split("\\").pop(); // Windows path
-                const rutaCompleta = `https://api.ficciona.co/uploads/${nombreArchivo}`;
+                const rutaCompleta = `${API_URL}/uploads/${nombreArchivo}`;
 
                 const preview = document.getElementById("preview");
                 preview.src = rutaCompleta;
@@ -68,7 +70,7 @@ form.addEventListener("submit", function (e) {
 
     formData.append("json", JSON.stringify(jsonData));
 
-    fetch("https://api.ficciona.co/historia/actualizar", {
+    fetch(API_URL + "/historia/actualizar", {
         method: "POST",
         body: formData
     })

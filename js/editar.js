@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 // Variables globales para guardar el contenido
 let contenidoCapitulo = "";
 let tituloCapitulo = "";
@@ -28,7 +30,7 @@ tinymce.init({
 
 // 3. Obtener los datos del capítulo
 if (capituloId) {
-    fetch(`https://api.ficciona.co/capitulo/${capituloId}`)
+    fetch(API_URL + `/capitulo/${capituloId}`)
         .then(response => {
             if (!response.ok) throw new Error("Error al obtener el capítulo");
             return response.json();
@@ -69,7 +71,7 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
         contenido: contenido
     };
 
-    fetch("https://api.ficciona.co/capitulo/actualizar", {
+    fetch(API_URL + "/capitulo/actualizar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

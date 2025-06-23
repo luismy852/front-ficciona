@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             enlace.classList.add("enlacePortada");
 
             const img = document.createElement("img");
-            img.src = `https://api.ficciona.co/uploads/${nombreArchivo}`;
+            img.src = API_URL + `/uploads/${nombreArchivo}`;
             img.alt = historia.titulo;
             img.classList.add("portada");
 
@@ -92,3 +92,96 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const respuesta = await fetch(API_URL + "/historia/random");
+        if (!respuesta.ok) {
+            throw new Error("No se pudieron cargar las historias aleatorias");
+        }
+
+        const historias = await respuesta.json();
+        console.log(historias);
+        const galeria = document.getElementById("galeriaRandom");
+
+        if (!galeria) return;
+
+        if (historias.length === 0) {
+            galeria.innerHTML = "<p>No hay historias aleatorias.</p>";
+            return;
+        }
+
+        historias.forEach(historia => {
+            const nombreArchivo = historia.portada;
+            ;
+
+            const enlace = document.createElement("a");
+            enlace.href = `libro.html?id=${historia.id}`;
+            enlace.classList.add("enlacePortada");
+
+            const img = document.createElement("img");
+            img.src = API_URL + `/uploads/${nombreArchivo}`;
+            img.alt = historia.titulo;
+            img.classList.add("portada");
+
+            enlace.appendChild(img);
+            galeria.appendChild(enlace);
+        });
+
+    } catch (error) {
+        const galeria = document.getElementById("galeriaRandom");
+        if (galeria) {
+            galeria.innerHTML = `<p class="error">${error.message}</p>`;
+        }
+    }
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const respuesta = await fetch(API_URL + "/historia/genero/TERROR?page=0&size=5");
+
+        if (!respuesta.ok) {
+            throw new Error("No se pudieron cargar las portadas");
+        }
+
+        const resultado = await respuesta.json();
+        const historias = resultado.content;
+        const galeria = document.getElementById("galeriaTerror");
+
+        if (!Array.isArray(historias)) {
+            galeria.innerHTML = "<p>No se pudo cargar la galería de historias.</p>";
+            console.error("Respuesta inesperada del backend:", resultado);
+            return;
+        }
+
+        if (historias.length === 0) {
+            galeria.innerHTML = "<p>No hay historias aún.</p>";
+            return;
+        }
+
+        historias.forEach(historia => {
+            if (!historia.portada) return;
+
+            const nombreArchivo = extraerNombreArchivo(historia.portada);
+
+            const enlace = document.createElement("a");
+            enlace.href = `libro.html?id=${historia.id}`;
+            enlace.classList.add("enlacePortada");
+
+            const img = document.createElement("img");
+            img.src = `${API_URL}/uploads/${nombreArchivo}`;
+            img.alt = historia.titulo;
+            img.classList.add("portada");
+
+            enlace.appendChild(img);
+            galeria.appendChild(enlace);
+        });
+    } catch (error) {
+        document.getElementById("galeriaTerror").innerHTML = `<p class="error">${error.message}</p>`;
+        console.error(error);
+    }
+
+    function extraerNombreArchivo(ruta) {
+        return ruta.split("\\").pop();
+    }
+});

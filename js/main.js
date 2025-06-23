@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 tinymce.init({
     selector: '#editor',
     license_key: 'gpl|<your-license-key>',
@@ -28,7 +30,7 @@ formulario.addEventListener('submit', (e) => {
         contenido: contenido
     };
 
-    fetch("https://api.ficciona.co/capitulo/crear", {
+    fetch(API_URL + "/capitulo/crear", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

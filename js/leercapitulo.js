@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 const params = new URLSearchParams(window.location.search);
 const capituloId = params.get("capitulo");
 const historiaId = params.get("id");
@@ -7,7 +9,7 @@ let progresoGuardado = 0;
 let scrollTimeout = null;
 
 // 👉 1. Cargar el capítulo
-fetch(`https://api.ficciona.co/capitulo/${capituloId}`)
+fetch(API_URL + `/capitulo/${capituloId}`)
     .then(res => res.json())
     .then(data => {
         console.log("📘 Capítulo cargado:", data);
@@ -22,7 +24,7 @@ fetch(`https://api.ficciona.co/capitulo/${capituloId}`)
         const usuarioId = localStorage.getItem("idUsuario");
 
         if (usuarioId && historiaId) {
-            fetch(`https://api.ficciona.co/progreso/${usuarioId}/${historiaId}`)
+            fetch(`${API_URL}/progreso/${usuarioId}/${historiaId}`)
                 .then(res => {
                     if (!res.ok) throw new Error("No se pudo obtener el progreso");
                     return res.json();
@@ -94,7 +96,7 @@ document.addEventListener("scroll", () => {
         };
 
         // Enviar al backend
-        fetch('https://api.ficciona.co/progreso', {
+        fetch(API_URL + '/progreso', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -121,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!historiaId || isNaN(capituloActualId)) return;
 
     // Obtener lista de IDs ordenados
-    fetch(`https://api.ficciona.co/capitulo/lista/${historiaId}`)
+    fetch(`${API_URL}/capitulo/lista/${historiaId}`)
         .then(res => res.json())
         .then(listaIds => {
             console.log("🧾 Lista de capítulos:", listaIds);

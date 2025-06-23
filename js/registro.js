@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 document.getElementById("registroForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -19,7 +21,7 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     };
 
     try {
-        let respuesta = await fetch("https://api.ficciona.co/registro", {
+        let respuesta = await fetch(API_URL + "/registro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

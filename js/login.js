@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 document.getElementById("registroForm").addEventListener("submit", async function (event) {
     event.preventDefault(); // Evita que se recargue la página
 
@@ -10,7 +12,7 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     };
 
     try {
-        const respuesta = await fetch("https://api.ficciona.co/login", {
+        const respuesta = await fetch(API_URL + "/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
