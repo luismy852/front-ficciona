@@ -10,29 +10,43 @@
 
 <body>
     <header>
-        <a href="index.html">
-            <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
-        </a>
+        <div id="headerLogueado">
+            <a href=" index.html">
+                <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+            </a>
 
-        <button class="boton__header">
-            Explorar
-        </button>
-        <img class="flecha" src="Imagenes/flecha.png" alt="">
+            <a class="boton__header" href="explorar.html">
+                Explorar
+            </a>
+            <img class="flecha" src="Imagenes/flecha.png" alt="">
 
-        <a class="boton__biblioteca" href="">Biblioteca</a>
-        <textarea class="textarea__header" name="" id=""></textarea>
-        <button class="boton__header">
-            <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
-        </button>
-        <button class="boton__header">Escribir</button>
-        <a class="registrarse__header" href="">Mi cuenta</a>
+            <a class="boton__biblioteca" href="biblioteca.html">Biblioteca</a>
+            <textarea class="textarea__header" name="" id=""></textarea>
+            <button class="boton__buscar">
+                <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+            </button>
+            <a class="boton__header" href="panel.html">Escribir</a>
+            <a class="registrarse__header" href="">Mi cuenta</a>
+            <button id="menuToggleLogueado" class="menu__toggle">☰</button>
+        </div>
+        <!-- Botón hamburguesa visible solo en móvil -->
+
+
+        <div id="menuMovilLogueado" class="menu-movil">
+            <a href="explorar.html">Explorar</a>
+            <a href="panel.html">Escribir</a>
+            <a href="biblioteca.html">Biblioteca</a>
+            <a href="perfil.html">Mi cuenta</a>
+            <button id="cerrarSesionBtn">Cerrar sesión</button>
+        </div>
+
     </header>
 
     <main>
 
         <div class="reto">
             <img class="imagen__reto" src="Imagenes/reto.png" alt="">
-            <div>
+            <div class="contenedor__reto">
                 <h1 class="titulo__reto">Reto de la semana</h1>
                 <p class="texto__reto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore

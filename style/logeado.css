@@ -4,21 +4,27 @@
     box-sizing: border-box;
 }
 
+
+
 header {
-    width: 1440px;
+    width: 100%;
     height: 100px;
     background-color: #493D9E;
     font-size: 24px;
     color: white;
+}
+
+#headerLogueado {
     display: flex;
+    min-height: 100px;
     align-items: center;
+    justify-content: center;
 }
 
 .logo__header {
     width: 65px;
     height: 65px;
-    margin-left: 21px;
-    margin-right: 100px;
+    margin-right: 25px;
 }
 
 .flecha {
@@ -34,7 +40,8 @@ header {
     color: white;
 }
 
-.boton__header {
+.boton__header,
+.boton__buscar {
     all: unset;
 }
 
@@ -57,6 +64,41 @@ header {
     color: white;
     margin-left: 40px;
 }
+
+.menu-movil {
+    display: none;
+    /* oculto por defecto */
+    position: fixed;
+    top: 60px;
+    /* ajusta según tu header */
+    right: 15px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    width: 200px;
+    padding: 15px;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.menu-movil.activo {
+    display: flex;
+}
+
+.menu__toggle {
+    display: none;
+    /* por defecto oculto */
+
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
 
 .portada {
     width: 200px;
@@ -376,3 +418,147 @@ seccion entrar por historia al panel
         height: 75px;
     }
 }
+
+@media (max-width: 1200px) {
+    .boton__header {
+        display: none;
+    }
+
+
+    .flecha {
+        display: none;
+    }
+
+    .reto {
+        width: 100%;
+        align-items: center;
+    }
+
+    .titulo__reto {
+        width: 100%;
+        text-align: center;
+    }
+
+
+
+    .boton__reto {
+        width: 90%;
+    }
+
+    .texto__reto {
+        width: 100%;
+        text-align: center;
+    }
+
+    .historia__card {
+        width: 90%;
+    }
+
+    .descripcion__historia {
+        width: 80%;
+    }
+
+    .boton1,
+    .boton2,
+    .boton3 {
+        margin-right: 5px;
+    }
+
+    .imagen__lupa {
+        margin-right: 5px;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+
+    .boton__biblioteca {
+        margin-right: 10px;
+    }
+
+    .registrarse__header {
+        margin-left: 0px;
+        text-align: center;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo__header {
+        margin-right: 5px;
+    }
+
+
+
+    .menu__toggle {
+        display: block;
+    }
+
+    .activo {
+        display: flex !important;
+    }
+
+    .boton__biblioteca {
+        display: none;
+    }
+
+    .registrarse__header {
+        display: none;
+    }
+
+    .historias__autor {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .imagen__reto {
+        margin-right: 5px;
+    }
+
+    .imagen__historia {
+        margin-right: 5px;
+    }
+
+    .boton__reto {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .historia__card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .descripcion__historia {
+        width: 95%;
+    }
+
+    .boton1,
+    .boton2,
+    .boton3 {
+        width: 30%;
+    }
+
+    .titulo__historia {
+        text-align: center;
+    }
+
+
+    .footer__links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .textarea__header {
+        width: 50%;
+    }
+
+
+}
+
+@media (max-width: 500px) {}

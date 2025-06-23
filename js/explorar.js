@@ -1,27 +1,49 @@
 import { API_URL } from "./config.js";
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
+
+    // Obtén los toggles y los menús móviles por separado
+    const menuToggleLogueado = document.getElementById("menuToggleLogueado");
+    const menuToggleAnonimo = document.getElementById("menuToggleAnonimo");
+
+    const menuMovilLogueado = document.getElementById("menuMovilLogueado");
+    const menuMovilAnonimo = document.getElementById("menuMovilAnonimo");
 
     if (token) {
         document.getElementById("headerLogueado").style.display = "flex";
         document.getElementById("headerAnonimo").style.display = "none";
+
+        if (menuToggleLogueado && menuMovilLogueado) {
+            menuToggleLogueado.addEventListener("click", () => {
+                menuMovilLogueado.classList.toggle("activo");
+            });
+        }
+
+        const btnCerrar = document.getElementById("cerrarSesionBtn");
+        if (btnCerrar) {
+            btnCerrar.addEventListener("click", () => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("idUsuario");
+                window.location.reload();
+            });
+        }
+
     } else {
         document.getElementById("headerLogueado").style.display = "none";
         document.getElementById("headerAnonimo").style.display = "flex";
-    }
 
-    // Botón de cerrar sesión
-    const btnCerrar = document.getElementById("cerrarSesion");
-    if (btnCerrar) {
-        btnCerrar.addEventListener("click", () => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("idUsuario");
-            window.location.reload();
-        });
+        if (menuToggleAnonimo && menuMovilAnonimo) {
+            menuToggleAnonimo.addEventListener("click", () => {
+                menuMovilAnonimo.classList.toggle("activo");
+            });
+        }
     }
 });
+
+
 
 //busqueda
 

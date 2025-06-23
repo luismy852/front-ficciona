@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let rutaImagen = "Imagenes/imagen-default.png"; // imagen por defecto
 
                 if (historia.portada) {
-                    rutaImagen = historia.portada.replace("src\\main\\resources\\uploads\\", "https://api.ficciona.co/uploads/");
+                    rutaImagen = API_URL + "/uploads/" + historia.portada;
                 }
 
                 card.innerHTML = `
