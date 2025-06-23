@@ -374,6 +374,7 @@ header {
 #contenidoCapitulo {
 
     width: 1156px;
+    font-size: 24px;
 }
 
 
@@ -465,6 +466,11 @@ header {
     .flecha {
         display: none;
     }
+
+    #contenidoCapitulo {
+
+        width: 90%;
+    }
 }
 
 @media (max-width: 850px) {
@@ -472,6 +478,8 @@ header {
     .botones__presentacion2 {
         margin-left: 50px;
     }
+
+
 
 
 }
@@ -616,6 +624,11 @@ header {
 
     .descripcion__panel {
         width: 90%;
+    }
+
+    .capitulo__contenedor {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
 
