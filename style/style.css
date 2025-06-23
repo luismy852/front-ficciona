@@ -545,6 +545,19 @@ header {
         height: auto;
         text-align: center;
     }
+
+    .imagen__panel {
+        width: 40%;
+        height: auto;
+    }
+
+    .titulo__panel {
+        width: 60%;
+    }
+
+    .descripcion__panel {
+        width: 60%;
+    }
 }
 
 @media (max-width: 650px) {
@@ -583,6 +596,26 @@ header {
 
     .textarea__header {
         width: 50%;
+    }
+
+    .panel__historia {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagen__panel {
+        width: 90%;
+        height: auto;
+        margin-right: 0px;
+    }
+
+    .titulo__panel {
+        width: 90%;
+        text-align: center;
+    }
+
+    .descripcion__panel {
+        width: 90%;
     }
 }
 
