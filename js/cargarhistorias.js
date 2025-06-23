@@ -1,4 +1,57 @@
-fetch("https://api.ficciona.co/historia/" + localStorage.getItem("idUsuario"))
+import { API_URL } from "./config.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtén los toggles y los menús móviles por separado
+    const menuToggleLogueado = document.getElementById("menuToggleLogueado");
+    const menuMovilLogueado = document.getElementById("menuMovilLogueado");
+
+    if (menuToggleLogueado && menuMovilLogueado) {
+        menuToggleLogueado.addEventListener("click", () => {
+            menuMovilLogueado.classList.toggle("activo");
+        });
+    }
+
+    const btnCerrar = document.getElementById("cerrarSesionBtn");
+    if (btnCerrar) {
+        btnCerrar.addEventListener("click", () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("idUsuario");
+            window.location.reload();
+        });
+    }
+});
+
+
+//busqueda
+
+document.addEventListener("DOMContentLoaded", function () {
+    const campos = document.querySelectorAll(".textarea__header");
+    const botones = document.querySelectorAll(".boton__buscar");
+
+    // Suponiendo que cada campo tiene su botón correspondiente en el mismo orden
+    campos.forEach((campo, index) => {
+        const boton = botones[index];
+
+        if (boton) {
+            boton.addEventListener("click", function () {
+                const termino = campo.value.trim();
+                if (termino !== "") {
+                    window.location.href = `busqueda.html?query=${encodeURIComponent(termino)}`;
+                }
+            });
+
+            campo.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    boton.click();
+                }
+            });
+        }
+    });
+});
+
+
+fetch(API_URL + "/historia/" + localStorage.getItem("idUsuario"))
     .then(response => response.json())
     .then(data => {
         const contenedor = document.getElementById("contenedorHistorias");
@@ -15,7 +68,7 @@ fetch("https://api.ficciona.co/historia/" + localStorage.getItem("idUsuario"))
             if (historia.portada) {
                 console.log(data)
                 const nombreArchivo = historia.portada.split("\\").pop();
-                img.src = "https://api.ficciona.co/uploads/" + historia.portada;
+                img.src = API_URL + "/uploads/" + historia.portada;
                 console.log("Imagen cargada:", img.src);
 
             } else {

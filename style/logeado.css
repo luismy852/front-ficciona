@@ -382,20 +382,18 @@ seccion entrar por historia al panel
 .capitulos__h2 {
     display: flex;
     font-size: 60px;
-    justify-content: space-between;
-    position: relative;
     padding-bottom: 90px;
+    align-items: center;
+    justify-content: center;
 }
 
 .capitulos__texto {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
 }
 
 .añadir {
-    position: absolute;
-    right: 0;
+    text-decoration: none;
+    margin-left: 50%;
 }
 
 .capitulo__contenedor {
@@ -416,6 +414,63 @@ seccion entrar por historia al panel
     img {
         width: 75px;
         height: 75px;
+    }
+}
+
+#preview {
+    width: 30%;
+}
+
+.contenedor__crear {
+    display: flex;
+    margin-left: 54px;
+    margin-right: 54px;
+    font-size: 32px;
+    justify-content: center;
+    margin-bottom: 54px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-left: 60px;
+
+
+        input {
+            width: 700px;
+            margin-bottom: 25px;
+            margin-top: 10px;
+
+        }
+
+        #titulo {
+            height: 50px;
+            border-radius: 20px;
+        }
+
+        #descripcion {
+            height: 300px;
+            margin-bottom: 25px;
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+
+        #categoria {
+            margin-bottom: 25px;
+            margin-top: 10px;
+            height: 50px;
+            border-radius: 20px;
+        }
+
+        #imagen {
+            height: 50px;
+        }
+
+        button {
+            height: 50px;
+            border-radius: 20px;
+            background-color: #FF8000;
+            font-size: 32px;
+        }
     }
 }
 
@@ -468,6 +523,37 @@ seccion entrar por historia al panel
         margin-right: 5px;
     }
 
+
+    #preview {
+        width: 40%;
+    }
+
+    .contenedor__crear {
+        margin-left: 5px;
+        margin-right: 5px;
+
+        form {
+            margin-left: 10px;
+            width: 100%;
+
+            input {
+                width: 95%;
+            }
+
+            #descripcion {
+                width: 95%;
+            }
+
+            button {
+                width: 95%;
+            }
+
+            #categoria {
+                width: 95%;
+            }
+
+        }
+    }
 }
 
 
@@ -525,6 +611,43 @@ seccion entrar por historia al panel
     .boton__reto {
         margin-left: 0px;
     }
+
+    .contenedor__crear {
+        flex-direction: column;
+        align-items: center;
+
+        form {
+            align-items: center;
+        }
+    }
+
+    #preview {
+        width: 90%;
+    }
+
+    .volver {
+        margin-left: 20px;
+    }
+
+
+    .imagen__panel {
+        width: 40%;
+        height: auto;
+    }
+
+    .titulo__panel {
+        width: 60%;
+    }
+
+    .descripcion__panel {
+        width: 60%;
+    }
+
+    .contenedor__panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (max-width: 650px) {
@@ -558,7 +681,34 @@ seccion entrar por historia al panel
         width: 50%;
     }
 
+    .reto {
+        flex-direction: column;
+    }
 
+    .boton__reto {
+        width: 100%;
+    }
+
+
+    .panel__historia {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagen__panel {
+        width: 90%;
+        height: auto;
+        margin-right: 0px;
+    }
+
+    .titulo__panel {
+        width: 90%;
+        text-align: center;
+    }
+
+    .descripcion__panel {
+        width: 90%;
+    }
 }
 
 @media (max-width: 500px) {}

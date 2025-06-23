@@ -565,24 +565,8 @@ header {
         text-align: center;
     }
 
-    .imagen__panel {
-        width: 40%;
-        height: auto;
-    }
 
-    .titulo__panel {
-        width: 60%;
-    }
 
-    .descripcion__panel {
-        width: 60%;
-    }
-
-    .contenedor__panel {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 @media (max-width: 650px) {
