@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const imagenInput = document.getElementById("imagen");
     const preview = document.getElementById("preview");
 
-    if (!form || !imagenInput || !preview) return;
-
     // Mostrar vista previa de imagen
     imagenInput.addEventListener("change", function () {
         const file = this.files[0];
