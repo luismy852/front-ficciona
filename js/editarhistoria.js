@@ -42,6 +42,21 @@ document.addEventListener("DOMContentLoaded", function () {
 const form = document.getElementById("creacionNueva");
 const imagenInput = document.getElementById("imagen");
 
+imagenInput.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const preview = document.getElementById("preview");
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -50,6 +65,7 @@ form.addEventListener("submit", function (e) {
     const genero = document.getElementById("categoria").value;
     const imagen = imagenInput.files[0];
     const historiaId = new URLSearchParams(window.location.search).get("id");
+            const token = localStorage.getItem("token");
 
     const jsonData = {
         id: parseInt(historiaId),
@@ -72,6 +88,9 @@ form.addEventListener("submit", function (e) {
 
     fetch(API_URL + "/historia/actualizar", {
         method: "POST",
+         headers: {
+        Authorization: `${token}`
+    },
         body: formData
     })
         .then(res => {

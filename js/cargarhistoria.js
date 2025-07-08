@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 // 1. Obtener el ID de la URL
 const params = new URLSearchParams(window.location.search);
 const historiaId = params.get("id");
@@ -11,7 +13,7 @@ enlace.href = `editar.html?id=${idHistoria}`;
 
 
 if (historiaId) {
-    fetch(`https://api.ficciona.co/historia/porid/${historiaId}`)
+    fetch(API_URL + `/historia/porid/${historiaId}`)
         .then(response => response.json())
         .then(data => {
             // 2. Rellenar la información de la historia
@@ -24,7 +26,7 @@ if (historiaId) {
             const img = document.querySelector(".imagen__panel");
             if (data.portada) {
                 const nombreArchivo = data.portada.split("\\").pop();
-                img.src = `https://api.ficciona.co/uploads/${nombreArchivo}`;
+                img.src = API_URL+ `/uploads/${nombreArchivo}`;
             }
 
             // 3. Mostrar capítulos
@@ -53,7 +55,7 @@ if (historiaId) {
                         const confirmar = confirm("⚠️ Esta acción eliminará el capítulo PERMANENTEMENTE. ¿Deseas continuar?");
                         if (!confirmar) return;
 
-                        fetch(`https://api.ficciona.co/capitulo/${capituloId}`, {
+                        fetch(API_URL+ `/capitulo/${capituloId}`, {
                             method: "DELETE"
                         })
                             .then(res => {
