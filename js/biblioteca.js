@@ -75,27 +75,33 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!data.length) {
                 const sinLecturas = document.createElement("p");
                 sinLecturas.textContent = "No tienes lecturas en progreso.";
+                sinLecturas.classList.add("sinlectura");
                 main.appendChild(sinLecturas);
                 return;
             }
 
-            data.forEach(item => {
-                const contenedor = document.createElement("div");
-                contenedor.classList.add("lectura");
+            // Crear un contenedor general para todas las lecturas
+            const contenedor = document.createElement("div");
+            contenedor.classList.add("lectura");
+            contenedor.id = `galeriaGenero`; // o algún valor único del objeto
 
+
+            data.forEach(item => {
                 const link = document.createElement("a");
+                link.classList.add("portada");
                 link.href = `capitulo.html?id=${item.historiaId}&capitulo=${item.capituloId}`;
 
                 const img = document.createElement("img");
-                const nombreArchivo = item.portada.split("\\").pop(); // corregir la ruta
+                const nombreArchivo = item.portada.split("\\").pop(); // Corregir ruta de archivo
                 img.src = `${API_URL}/uploads/${nombreArchivo}`;
                 img.alt = item.tituloHistoria;
                 img.classList.add("portada");
 
                 link.appendChild(img);
                 contenedor.appendChild(link);
-                main.appendChild(contenedor);
             });
+
+            main.appendChild(contenedor);
         })
         .catch(err => {
             console.error("❌ Error al cargar lecturas:", err.message);

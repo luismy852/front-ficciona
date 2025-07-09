@@ -507,6 +507,22 @@ seccion entrar por historia al panel
 }
 
 
+.titulo__seguir{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+.sinlectura{
+    margin-left: 2%;
+}
+
+#galeriaGenero {
+    margin: 0 120px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 🎯 5 columnas iguales */
+    gap: 20px;
+}
 
 
 @media (max-width: 1200px) {
@@ -599,6 +615,20 @@ seccion entrar por historia al panel
     .descripcion__panel {
         width: 100%;
     }
+}
+
+@media (max-width: 850px) {
+
+#galeriaGenero {
+    margin: 0 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+
+
 }
 
 

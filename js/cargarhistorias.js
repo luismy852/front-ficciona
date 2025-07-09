@@ -1,5 +1,8 @@
 import { API_URL } from "./config.js";
 
+const token = localStorage.getItem("token");
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Obtén los toggles y los menús móviles por separado
     const menuToggleLogueado = document.getElementById("menuToggleLogueado");
@@ -104,6 +107,34 @@ fetch(API_URL + "/historia/" + localStorage.getItem("idUsuario"))
             eliminar.classList.add("boton3");
             eliminar.href = "#";
             eliminar.textContent = "Eliminar";
+            eliminar.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const confirmacion = confirm("¿Estás seguro que deseas eliminar esta historia?\n\n⚠️ Esto solo la hará privada y no será visible para otros hasta que publiques un nuevo capítulo.");
+
+    if (confirmacion) {
+        fetch(`${API_URL}/historia/publicado/${historia.id}`, {
+            method: "PATCH",
+                   headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("✅ La historia ahora es privada.");
+                location.reload(); // o puedes eliminar visualmente la tarjeta si no quieres recargar
+            } else {
+                alert("❌ No se pudo hacer privada la historia.");
+            }
+        })
+        .catch(error => {
+            console.error("Error al despublicar:", error);
+            alert("❌ Ocurrió un error.");
+        });
+    }
+});
+
 
             // Añadir contenido
             contenido.append(h3, p, ver, editar, eliminar);

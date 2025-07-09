@@ -188,13 +188,12 @@ header {
 }
 
 #galeriaGenero {
-    margin-right: 120px;
-    margin-left: 120px;
-    display: flex;
-    flex-wrap: wrap;
+    margin: 0 120px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 🎯 5 columnas iguales */
     gap: 20px;
-    justify-content: space-between;
 }
+
 
 .enlacePortada1 {
     width: calc(20% - 20px);
@@ -449,6 +448,17 @@ header {
 }
 
 
+
+#linkSiguiente{
+   display: block;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  text-decoration: none;
+    
+}
+
 @media (max-width: 1200px) {
     .boton__header {
         display: none;
@@ -497,6 +507,13 @@ header {
     .botones__presentacion2 {
         margin-left: 50px;
     }
+
+#galeriaGenero {
+    margin: 0 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
 
 
