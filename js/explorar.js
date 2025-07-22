@@ -22,14 +22,19 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        const btnCerrar = document.getElementById("cerrarSesionBtn");
-        if (btnCerrar) {
-            btnCerrar.addEventListener("click", () => {
-                localStorage.removeItem("token");
-                localStorage.removeItem("idUsuario");
-                window.location.reload();
-            });
-        }
+const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
+
+[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+      window.location.reload(); // O redirecciona a login si prefieres
+    });
+  }
+});
+
 
     } else {
         document.getElementById("headerLogueado").style.display = "none";

@@ -28,6 +28,20 @@ tinymce.init({
     }
 });
 
+const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
+
+[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+      window.location.reload(); // O redirecciona a login si prefieres
+    });
+  }
+});
+
+
 // 3. Obtener los datos del capítulo
 if (capituloId) {
     fetch(API_URL + `/capitulo/${capituloId}`)

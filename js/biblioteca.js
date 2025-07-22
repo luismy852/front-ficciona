@@ -11,15 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
             menuMovilLogueado.classList.toggle("activo");
         });
     }
+const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
 
-    const btnCerrar = document.getElementById("cerrarSesionBtn");
-    if (btnCerrar) {
-        btnCerrar.addEventListener("click", () => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("idUsuario");
-            window.location.reload();
-        });
-    }
+[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+      window.location.reload(); // O redirecciona a login si prefieres
+    });
+  }
+});
+
 });
 
 

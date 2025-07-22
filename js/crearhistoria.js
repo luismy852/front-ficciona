@@ -22,6 +22,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
+
+[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+      window.location.reload(); // O redirecciona a login si prefieres
+    });
+  }
+});
+
 
 //busqueda
 
