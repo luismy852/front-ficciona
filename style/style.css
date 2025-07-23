@@ -213,8 +213,12 @@ header {
 .footer__links {
     display: flex;
     justify-content: space-around;
-    font-size: 24px;
-    padding-top: 37px;
+    font-size: 20px;
+    padding-bottom: 37px;
+    a {
+        text-decoration: none;
+        color: black;
+    }
 }
 
 .text__footer {
