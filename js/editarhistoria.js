@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.portada) {
                 const rutaCompleta = data.portada.startsWith("/uploads/")
     ? `${API_URL}${data.portada}`
-    : `${API_URL}/uploads/${data.portada}`;
+    : `${API_URL}${data.portada}`;
 
 
                 const preview = document.getElementById("preview");
