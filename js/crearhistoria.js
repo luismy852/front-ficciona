@@ -121,9 +121,10 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => {
                 if (response.ok) {
-                    alert("Capítulo creado exitosamente");
+                    alert("Historia creada exitosamente");
                     form.reset();
                     preview.style.display = "none";
+                    window.location.href = "panel.html"
                 } else {
                     return response.text().then(text => {
                         throw new Error(text);
