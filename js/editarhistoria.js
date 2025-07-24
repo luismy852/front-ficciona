@@ -22,8 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 🖼️ Mostrar portada si existe
             if (data.portada) {
-                const nombreArchivo = data.portada.split("\\").pop(); // Windows path
-                const rutaCompleta = `${API_URL}/uploads/${nombreArchivo}`;
+                const rutaCompleta = data.portada.startsWith("/uploads/")
+    ? `${API_URL}${data.portada}`
+    : `${API_URL}/uploads/${data.portada}`;
+
 
                 const preview = document.getElementById("preview");
                 preview.src = rutaCompleta;
