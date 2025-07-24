@@ -69,20 +69,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const imagenInput = document.getElementById("imagen");
     const preview = document.getElementById("preview");
 
-    // Mostrar vista previa de imagen
-    imagenInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
+// Validar proporción 2:3 y mostrar vista previa si es válida
+imagenInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+        const img = new Image();
+        img.onload = function () {
+            const aspectRatio = this.width / this.height;
+            const expected = 2 / 3;
+
+            if (Math.abs(aspectRatio - expected) > 0.05) {
+                alert("La imagen debe tener una proporción de 2:3 (por ejemplo, 800x1200 px)");
+                imagenInput.value = ""; // limpia selección
+                preview.style.display = "none";
+                return;
+            }
+
             const reader = new FileReader();
             reader.onload = function (e) {
                 preview.src = e.target.result;
                 preview.style.display = "block";
             };
             reader.readAsDataURL(file);
-        } else {
-            preview.style.display = "none";
-        }
-    });
+        };
+
+        img.src = URL.createObjectURL(file);
+    } else {
+        preview.style.display = "none";
+    }
+});
+
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
