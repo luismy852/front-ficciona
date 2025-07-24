@@ -461,8 +461,10 @@ seccion entrar por historia al panel
             border-radius: 20px;
         }
 
-        #imagen {
-            height: 50px;
+  
+        .recomendacion{
+            font-size: 14px ;
+            margin-bottom: 25px;
         }
 
         button {
