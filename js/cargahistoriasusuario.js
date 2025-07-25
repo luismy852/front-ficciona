@@ -87,6 +87,9 @@ if (historiaId) {
             // 2. Rellenar la información de la historia
             document.querySelector(".titulo__panel").textContent = data.titulo;
             document.querySelector(".descripcion__panel").textContent = data.descripcion;
+               // Cambiar el <title> de la página
+            document.title = data.titulo;
+
 
             // Si hay portada, mostrarla
             const img = document.querySelector(".imagen__panel");
