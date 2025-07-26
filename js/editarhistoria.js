@@ -46,13 +46,36 @@ imagenInput.addEventListener("change", function () {
     const file = this.files[0];
 
     if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const preview = document.getElementById("preview");
-            preview.src = e.target.result;
-            preview.style.display = "block";
+        // Validar tamaño menor a 5MB
+        const maxSize = 5 * 1024 * 1024;
+        if (file.size > maxSize) {
+            alert("La imagen debe pesar menos de 5MB.");
+            imagenInput.value = "";
+            document.getElementById("preview").style.display = "none";
+            return;
+        }
+
+        const img = new Image();
+        img.onload = function () {
+            const aspectRatio = this.width / this.height;
+            const expected = 2 / 3;
+            if (Math.abs(aspectRatio - expected) > 0.05) {
+                alert("La imagen debe tener una proporción de 2:3 (por ejemplo, 800x1200 px)");
+                imagenInput.value = "";
+                document.getElementById("preview").style.display = "none";
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const preview = document.getElementById("preview");
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
         };
-        reader.readAsDataURL(file);
+        img.src = URL.createObjectURL(file);
+    } else {
+        document.getElementById("preview").style.display = "none";
     }
 });
 
@@ -65,7 +88,17 @@ form.addEventListener("submit", function (e) {
     const genero = document.getElementById("categoria").value;
     const imagen = imagenInput.files[0];
     const historiaId = new URLSearchParams(window.location.search).get("id");
-            const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+
+    // Validaciones antes de enviar
+    if (imagen) {
+        const maxSize = 5 * 1024 * 1024;
+        if (imagen.size > maxSize) {
+            alert("La imagen debe pesar menos de 5MB.");
+            return;
+        }
+        // Validar proporción 2:3 usando FileReader y Image (sincrónico no posible aquí, así que solo se valida en el change)
+    }
 
     const jsonData = {
         id: parseInt(historiaId),

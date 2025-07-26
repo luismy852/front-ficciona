@@ -73,6 +73,15 @@ document.addEventListener("DOMContentLoaded", function () {
 imagenInput.addEventListener("change", function () {
     const file = this.files[0];
     if (file) {
+        // Validar tamaño menor a 5MB
+        const maxSize = 5 * 1024 * 1024; // 5MB en bytes
+        if (file.size > maxSize) {
+            alert("La imagen debe pesar menos de 5MB.");
+            imagenInput.value = ""; // limpia selección
+            preview.style.display = "none";
+            return;
+        }
+
         const img = new Image();
         img.onload = function () {
             const aspectRatio = this.width / this.height;
