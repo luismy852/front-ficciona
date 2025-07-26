@@ -103,6 +103,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             enlace.appendChild(img);
             galeria.appendChild(enlace);
+                        img.onerror = function () {
+    this.onerror = null;
+    this.src = "/imagenes/predefinido.png";
+};
         });
     } catch (error) {
         document.getElementById("galeriaPortadas").innerHTML = `<p class="error">${error.message}</p>`;
@@ -147,6 +151,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             enlace.appendChild(img);
             galeria.appendChild(enlace);
+
+            img.onerror = function () {
+    this.onerror = null;
+    this.src = "/imagenes/predefinido.png";
+};
         });
 
     } catch (error) {
@@ -196,6 +205,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             enlace.appendChild(img);
             galeria.appendChild(enlace);
+                        img.onerror = function () {
+    this.onerror = null;
+    this.src = "/imagenes/predefinido.png";
+};
         });
     } catch (error) {
         document.getElementById("galeriaTerror").innerHTML = `<p class="error">${error.message}</p>`;

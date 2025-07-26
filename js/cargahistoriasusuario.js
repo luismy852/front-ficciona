@@ -96,6 +96,10 @@ if (historiaId) {
             if (data.portada) {
                 const nombreArchivo = data.portada.split("\\").pop();
                 img.src = API_URL + `/uploads/${nombreArchivo}`;
+                            img.onerror = function () {
+    this.onerror = null;
+    this.src = "/imagenes/predefinido.png";
+};
             }
 
             // 3. Mostrar capítulos

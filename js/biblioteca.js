@@ -103,6 +103,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 link.appendChild(img);
                 contenedor.appendChild(link);
+
+                            img.onerror = function () {
+    this.onerror = null;
+    this.src = "/imagenes/predefinido.png";
+};
             });
 
             main.appendChild(contenedor);
