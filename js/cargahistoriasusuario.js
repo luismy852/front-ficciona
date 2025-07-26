@@ -98,7 +98,7 @@ if (historiaId) {
                 img.src = API_URL + `/uploads/${nombreArchivo}`;
                             img.onerror = function () {
     this.onerror = null;
-    this.src = "/imagenes/predefinido.png";
+    this.src = "/Imagenes/predefinido.png";
 };
             }
 

@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             galeria.appendChild(enlace);
                         img.onerror = function () {
     this.onerror = null;
-    this.src = "/imagenes/predefinido.png";
+    this.src = "/Imagenes/predefinido.png";
 };
         });
     } catch (error) {
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             galeria.appendChild(enlace);
                         img.onerror = function () {
     this.onerror = null;
-    this.src = "/imagenes/predefinido.png";
+    this.src = "/Imagenes/predefinido.png";
 };
         });
     } catch (error) {
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                         img.onerror = function () {
     this.onerror = null;
-    this.src = "/imagenes/predefinido.png";
+    this.src = "/Imagenes/predefinido.png";
 };
         });
     } catch (error) {
@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                         img.onerror = function () {
     this.onerror = null;
-    this.src = "/imagenes/predefinido.png";
+    this.src = "/Imagenes/predefinido.png";
 };
         });
     } catch (error) {

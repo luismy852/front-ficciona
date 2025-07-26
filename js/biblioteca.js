@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             img.onerror = function () {
     this.onerror = null;
-    this.src = "/imagenes/predefinido.png";
+    this.src = "/Imagenes/predefinido.png";
 };
             });
 
