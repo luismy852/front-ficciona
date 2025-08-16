@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+
 const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
 
-[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+[btnCerrarMovil].forEach(btn => {
   if (btn) {
     btn.addEventListener("click", () => {
       localStorage.removeItem("token");
@@ -145,6 +145,13 @@ imagenInput.addEventListener("change", function () {
             }
         })
             .then(response => {
+                if (response.status === 403) {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("idUsuario");
+                    alert("La sesión ha caducado. Debes volver a iniciar sesión.");
+                    window.location.href = "login.html";
+                    return;
+                }
                 if (response.ok) {
                     alert("Historia creada exitosamente");
                     form.reset();
