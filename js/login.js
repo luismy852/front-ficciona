@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("registroForm").addEventListener("submit", async function (event) {
     event.preventDefault(); // Evita que se recargue la página
 
-    const login = document.getElementById("usuario").value;
+    const login = document.getElementById("usuario").value.toLowerCase();
     const clave = document.getElementById("password").value;
 
     const datos = {

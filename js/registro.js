@@ -76,7 +76,7 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     event.preventDefault();
 
     let email = document.getElementById("email").value;
-    let usuario = document.getElementById("usuario").value;
+    let usuario = document.getElementById("usuario").value.toLowerCase();
     let password = document.getElementById("password").value;
     let repetirPassword = document.getElementById("repetirPassword").value;
     let errorMensaje = document.getElementById("errorMensaje");
