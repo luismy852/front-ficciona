@@ -50,7 +50,7 @@ const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
     btn.addEventListener("click", () => {
       localStorage.removeItem("token");
       localStorage.removeItem("idUsuario");
-      window.location.href = "index.html"; // Redirige a index.html
+      window.location.reload(); // O redirecciona a login si prefieres
     });
   }
 });
@@ -85,65 +85,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", async function () {
+    // Verificación de correo
+    const verificandoDiv = document.getElementById("verificandoDiv");
+    const exitoDiv = document.getElementById("exitoDiv");
+    const errorDiv = document.getElementById("errorDiv");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const usuarioId = localStorage.getItem("idUsuario");
-    const token = localStorage.getItem("token");
+    if (verificandoDiv && exitoDiv && errorDiv) {
+        verificandoDiv.style.display = "flex";
+        exitoDiv.style.display = "none";
+        errorDiv.style.display = "none";
 
-    if (!usuarioId || !token) {
-        console.warn("⚠️ Usuario no autenticado");
-        return;
-    }
+        const params = new URLSearchParams(window.location.search);
+        const codigo = params.get("codigo");
+        const id = params.get("id");
 
-    fetch(API_URL + `/progreso/${usuarioId}`, {
-        headers: {
-            Authorization: token
+        if (!codigo || !id) {
+            verificandoDiv.style.display = "none";
+            errorDiv.style.display = "flex";
+            return;
         }
-    })
-        .then(res => {
-            if (!res.ok) throw new Error("Error al obtener lecturas");
-            return res.json();
-        })
-        .then(data => {
-            const main = document.querySelector("main");
 
-            if (!data.length) {
-                const sinLecturas = document.createElement("p");
-                sinLecturas.textContent = "No tienes lecturas en progreso.";
-                sinLecturas.classList.add("sinlectura");
-                main.appendChild(sinLecturas);
-                return;
+        try {
+            const res = await fetch(API_URL + `/verificar/${codigo}/${id}`);
+            if (res.ok) {
+                verificandoDiv.style.display = "none";
+                exitoDiv.style.display = "flex";
+            } else {
+                verificandoDiv.style.display = "none";
+                errorDiv.style.display = "flex";
             }
-
-            // Crear un contenedor general para todas las lecturas
-            const contenedor = document.createElement("div");
-            contenedor.classList.add("lectura");
-            contenedor.id = `galeriaGenero`; // o algún valor único del objeto
-
-
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.classList.add("portada");
-                link.href = `capitulo.html?id=${item.historiaId}&capitulo=${item.capituloId}`;
-
-                const img = document.createElement("img");
-                const nombreArchivo = item.portada.split("\\").pop(); // Corregir ruta de archivo
-                img.src = `${API_URL}/uploads/${nombreArchivo}`;
-                img.alt = item.tituloHistoria;
-                img.classList.add("portada");
-
-                link.appendChild(img);
-                contenedor.appendChild(link);
-
-                            img.onerror = function () {
-    this.onerror = null;
-    this.src = "/Imagenes/predefinido.png";
-};
-            });
-
-            main.appendChild(contenedor);
-        })
-        .catch(err => {
-            console.error("❌ Error al cargar lecturas:", err.message);
-        });
+        } catch (e) {
+            verificandoDiv.style.display = "none";
+            errorDiv.style.display = "flex";
+        }
+    }
 });
+
+

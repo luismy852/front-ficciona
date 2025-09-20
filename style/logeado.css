@@ -526,6 +526,53 @@ seccion entrar por historia al panel
     gap: 20px;
 }
 
+.crear__reto__titulo{
+    text-align: center;
+    font-size: 64px;
+}
+
+.crear__reto__descripcion{
+    display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-top: 50px;
+     padding-bottom: 50px;
+
+    p{
+        width: 40%;
+        font-size: 32px;
+    }
+
+    img { 
+        width: 434px;
+        height: 434px;
+    }
+}
+
+.verificar__exito__texto{
+    font-size: 48px;
+}
+
+.verificar__exito__texto2{
+    font-size: 32px;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.autor{
+    font-size: 24px;
+    color: black;
+}
+
+
 
 @media (max-width: 1200px) {
     .boton__header {
@@ -756,6 +803,35 @@ seccion entrar por historia al panel
     .editar__historia {
         margin-right: 0px;
     }
+
+    .crear__reto__descripcion{
+        flex-direction: column;
+        p{
+            margin-top: 20px;
+        }
+
+        hr{
+            margin-top: 50px;
+        }
+    }
+
+        .corazon{
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.titulo__contenedor{
+    margin-top: 10px;
+}
+
+.autor{
+    margin-left: 25px;
+}
+
+}
+
 }
 
 @media (max-width: 650px) {

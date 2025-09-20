@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ficciona</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="Imagenes/Ficciona-logo.png" type="image/x-icon">
 </head>
 
 <body>
+
     <header>
         <div id="headerLogueado" style="display: none;">
             <a href="index.html">
@@ -27,7 +30,7 @@
                 <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
             </button>
             <a class="boton__header" href="panel.html">Escribir</a>
-            <a class="registrarse__header" id="cerrarSesionMovil">Cerrar sesión</a>
+            <a class="registrarse__header" id="cerrarSesionBtn">Cerrar sesión</a>
             <button id="menuToggleLogueado" class="menu__toggle">☰</button>
         </div>
 
@@ -58,7 +61,7 @@
             <a href="panel.html">Escribir</a>
             <a href="biblioteca.html">Biblioteca</a>
             <a href="perfil.html">Mi cuenta</a>
-            <button id="cerrarSesionBtn">Cerrar sesión</button>
+            <button id="cerrarSesionMovil">Cerrar sesión</button>
         </div>
 
         <div id="menuMovilAnonimo" class="menu-movil">
@@ -69,57 +72,31 @@
 
 
     </header>
+
     <main>
-        <div class="panel__historia">
-            <img class="imagen__panel" src="Imagenes/portada.png" alt="">
-            <div class="contenedor__panel">
-
-                <div class="titulo__contenedor">
-                    <h2 class="titulo__panel">Titulo</h2>
-                   <img class="corazon" src="Imagenes/me-gusta.png" alt="">
-                </div>
-                
-                <a class="autor" href=""></a>
-                <p class="descripcion__panel">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore
-                    et
-                    dolore
-                    magna aliqua. Nisl tincidunt eget nullam non. Quis hendrerit dolor magna eget est lorem ipsum dolor
-                    sit.
-                    Volutpat odio facilisis mauris sit amet massa. </p>
-            </div>
-
+        <div class="verificar__container" id="verificandoDiv">
+            <p class="verificar__texto">Estamos verificando tu correo...</p>
+            <img class="verificar__imagen" src="Imagenes/rocket.svg" alt="">  
         </div>
 
-        <div class="linea__separadora__contenedor">
-            <hr class="linea__separadora">
-        </div>
-
-
-        <div class="capitulos__h2">
-            <h2 class="capitulos__texto">Capitulos</h2>
-        </div>
-
-        <div class="capitulo__contenedor">
+        <div class="verificar__container__exito" id="exitoDiv" style="display:none;">
+            <img src="Imagenes/space-exploration.png" alt="">
             <div>
-                <h3>Titulo Capitulo</h3>
+                <p class="verificar__exito__texto">¡Misión cumplida!</p>
+                <p class="verificar__exito__texto2">Tu correo ha sido verificado</p>
             </div>
-
-            <div>
-                <a href="">
-                    <img src="Imagenes/leer.png" alt="">
-                </a>
-            </div>
-
         </div>
 
-
-        <div class="linea__separadora__contenedor">
-            <hr class="linea__separadora">
+        <div class="verificar__container__exito" id="errorDiv" style="display:none;">
+            <img src="Imagenes/traje-espacial.png" alt="">
+            <div>
+                <p class="verificar__exito__texto">Houston, tenemos un problema</p>
+                <p class="verificar__exito__texto2">Tu correo no pudo ser verificado</p>
+            </div>
         </div>
     </main>
 
-    <footer>
+        <footer>
  
         <div class="footer__texto">
             <p class="text__footer">Ficciona, plataforma para escribir y compartir historias en base a retos.</p>
@@ -135,8 +112,8 @@
         </div>
 
     </footer>
+     <script type="module" src="js/verificarCorreo.js"></script>
 
-    <script type="module" src="js/cargahistoriasusuario.js"></script>
 </body>
 
 </html>

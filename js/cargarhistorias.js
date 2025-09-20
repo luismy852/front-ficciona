@@ -4,54 +4,59 @@ const token = localStorage.getItem("token");
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    const token = localStorage.getItem("token");
+
     // Obtén los toggles y los menús móviles por separado
     const menuToggleLogueado = document.getElementById("menuToggleLogueado");
+    const menuToggleAnonimo = document.getElementById("menuToggleAnonimo");
+
     const menuMovilLogueado = document.getElementById("menuMovilLogueado");
+    const menuMovilAnonimo = document.getElementById("menuMovilAnonimo");
 
-    if (menuToggleLogueado && menuMovilLogueado) {
-        menuToggleLogueado.addEventListener("click", () => {
-            menuMovilLogueado.classList.toggle("activo");
-        });
-    }
+    if (token) {
+        document.getElementById("headerLogueado").style.display = "flex";
+        document.getElementById("headerAnonimo").style.display = "none";
 
-    const btnCerrar = document.getElementById("cerrarSesionBtn");
-    if (btnCerrar) {
-        btnCerrar.addEventListener("click", () => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("idUsuario");
-            window.location.reload();
-        });
-    }
-});
-
-
-//busqueda
-
-document.addEventListener("DOMContentLoaded", function () {
-    const campos = document.querySelectorAll(".textarea__header");
-    const botones = document.querySelectorAll(".boton__buscar");
-
-    // Suponiendo que cada campo tiene su botón correspondiente en el mismo orden
-    campos.forEach((campo, index) => {
-        const boton = botones[index];
-
-        if (boton) {
-            boton.addEventListener("click", function () {
-                const termino = campo.value.trim();
-                if (termino !== "") {
-                    window.location.href = `busqueda.html?query=${encodeURIComponent(termino)}`;
-                }
-            });
-
-            campo.addEventListener("keypress", function (e) {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    boton.click();
-                }
+        if (menuToggleLogueado && menuMovilLogueado) {
+            menuToggleLogueado.addEventListener("click", () => {
+                menuMovilLogueado.classList.toggle("activo");
             });
         }
-    });
+
+        const btnCerrar = document.getElementById("cerrarSesionBtn");
+        if (btnCerrar) {
+            btnCerrar.addEventListener("click", () => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("idUsuario");
+                window.location.reload();
+            });
+        }
+
+    } else {
+        document.getElementById("headerLogueado").style.display = "none";
+        document.getElementById("headerAnonimo").style.display = "flex";
+
+        if (menuToggleAnonimo && menuMovilAnonimo) {
+            menuToggleAnonimo.addEventListener("click", () => {
+                menuMovilAnonimo.classList.toggle("activo");
+            });
+        }
+    }
 });
+
+const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
+
+[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+      window.location.href = "index.html"; // Redirige a index.html
+    });
+  }
+});
+
 
 
 fetch(API_URL + "/historia/" + localStorage.getItem("idUsuario"))
@@ -145,3 +150,27 @@ fetch(API_URL + "/historia/" + localStorage.getItem("idUsuario"))
     .catch(error => {
         console.error("Error al cargar las historias:", error);
     });
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    // Lógica para el botón de reto
+    setTimeout(async () => {
+        try {
+            const res = await fetch(API_URL + "/historia/reto");
+            const data = await res.json();
+            // Si la respuesta tiene id y nombreReto, actualiza el href y el h1
+            if (data && data.id && data.nombreReto) {
+                const botonReto = document.querySelector(".boton__reto");
+                if (botonReto) {
+                    botonReto.setAttribute("href", `crearreto.html?id=${data.id}`);
+                }
+                const h1Reto = document.querySelector(".titulo__reto");
+                if (h1Reto) {
+                    h1Reto.textContent += ` ${data.nombreReto}`;
+                }
+            }
+        } catch (e) {
+            // Silenciar error, no hay reto disponible
+        }
+    }, 0);
+});

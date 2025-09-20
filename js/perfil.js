@@ -1,6 +1,5 @@
 import { API_URL } from "./config.js";
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
 
@@ -50,7 +49,7 @@ const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
     btn.addEventListener("click", () => {
       localStorage.removeItem("token");
       localStorage.removeItem("idUsuario");
-      window.location.href = "index.html"; // Redirige a index.html
+      window.location.reload(); // O redirecciona a login si prefieres
     });
   }
 });
@@ -86,64 +85,50 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const usuarioId = localStorage.getItem("idUsuario");
-    const token = localStorage.getItem("token");
+document.addEventListener("DOMContentLoaded", async function () {
+    // Obtener idUsuario de la URL
+    const params = new URLSearchParams(window.location.search);
+    const idUsuario = params.get("id");
+    if (!idUsuario) return;
 
-    if (!usuarioId || !token) {
-        console.warn("⚠️ Usuario no autenticado");
-        return;
-    }
+    try {
+        const res = await fetch(`${API_URL}/historia/${idUsuario}`);
+        const historias = await res.json();
 
-    fetch(API_URL + `/progreso/${usuarioId}`, {
-        headers: {
-            Authorization: token
-        }
-    })
-        .then(res => {
-            if (!res.ok) throw new Error("Error al obtener lecturas");
-            return res.json();
-        })
-        .then(data => {
-            const main = document.querySelector("main");
-
-            if (!data.length) {
-                const sinLecturas = document.createElement("p");
-                sinLecturas.textContent = "No tienes lecturas en progreso.";
-                sinLecturas.classList.add("sinlectura");
-                main.appendChild(sinLecturas);
-                return;
+        // Cambiar el h1 por el autor si hay historias
+        if (historias.length > 0 && historias[0].autor) {
+            const h1 = document.querySelector("h1.autor__perfil");
+            if (h1) {
+                const autor = historias[0].autor;
+                h1.textContent = autor.charAt(0).toUpperCase() + autor.slice(1);
             }
+        }
 
-            // Crear un contenedor general para todas las lecturas
-            const contenedor = document.createElement("div");
-            contenedor.classList.add("lectura");
-            contenedor.id = `galeriaGenero`; // o algún valor único del objeto
+        // Poner las portadas en #galeriaGenero
+        const galeria = document.getElementById("galeriaGenero");
+        if (galeria) galeria.innerHTML = ""; // Limpiar galería
 
+        historias.forEach(historia => {
+            const nombreArchivo = historia.portada ? historia.portada.split("\\").pop() : "";
+            const enlace = document.createElement("a");
+            enlace.href = `libro.html?id=${historia.id}`;
+            enlace.classList.add("enlacePortada");
 
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.classList.add("portada");
-                link.href = `capitulo.html?id=${item.historiaId}&capitulo=${item.capituloId}`;
+            const img = document.createElement("img");
+            img.src = API_URL + `/uploads/${nombreArchivo}`;
+            img.alt = historia.titulo;
+            img.classList.add("portada");
 
-                const img = document.createElement("img");
-                const nombreArchivo = item.portada.split("\\").pop(); // Corregir ruta de archivo
-                img.src = `${API_URL}/uploads/${nombreArchivo}`;
-                img.alt = item.tituloHistoria;
-                img.classList.add("portada");
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = "/Imagenes/predefinido.png";
+            };
 
-                link.appendChild(img);
-                contenedor.appendChild(link);
-
-                            img.onerror = function () {
-    this.onerror = null;
-    this.src = "/Imagenes/predefinido.png";
-};
-            });
-
-            main.appendChild(contenedor);
-        })
-        .catch(err => {
-            console.error("❌ Error al cargar lecturas:", err.message);
+            enlace.appendChild(img);
+            galeria.appendChild(enlace);
         });
+    } catch (e) {
+        const galeria = document.getElementById("galeriaGenero");
+        if (galeria) galeria.innerHTML = "<p>No se pudieron cargar las historias del usuario.</p>";
+    }
 });

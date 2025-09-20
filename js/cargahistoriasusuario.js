@@ -41,6 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+const btnCerrarWeb = document.getElementById("cerrarSesionBtn");
+const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
+
+[btnCerrarWeb, btnCerrarMovil].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+      window.location.reload(); // O redirecciona a login si prefieres
+    });
+  }
+});
+
 
 
 //busqueda
@@ -84,9 +97,12 @@ if (historiaId) {
     fetch(API_URL + `/historia/porid/${historiaId}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             // 2. Rellenar la información de la historia
             document.querySelector(".titulo__panel").textContent = data.titulo;
             document.querySelector(".descripcion__panel").textContent = data.descripcion;
+            document.querySelector(".autor").textContent = data.autor;
+            document.querySelector(".autor").href = `perfil.html?id=${data.idAutor}`;
                // Cambiar el <title> de la página
             document.title = data.titulo;
 
@@ -129,3 +145,84 @@ if (historiaId) {
 } else {
     console.error("No se encontró el ID en la URL.");
 }
+
+// Función para establecer el estado inicial del corazón según si ya votó o no
+async function setEstadoCorazon() {
+    const corazonImg = document.querySelector(".corazon");
+    const idUsuario = localStorage.getItem("idUsuario");
+    if (!corazonImg || !idUsuario || !idHistoria) return;
+    try {
+        const res = await fetch(`${API_URL}/historia/voto/${idHistoria}/${idUsuario}`, {
+            method: "GET"
+        });
+        const yaVoto = await res.json();
+        if (yaVoto === true) {
+            corazonImg.src = "Imagenes/corazon.png";
+        } else {
+            corazonImg.src = "Imagenes/me-gusta.png";
+        }
+    } catch (e) {
+        corazonImg.src = "Imagenes/me-gusta.png";
+    }
+}
+
+setEstadoCorazon();
+
+// Cambiar imagen de corazón al hacer click (toggle) y hacer petición POST al dar "me gusta"
+const corazonImg = document.querySelector(".corazon");
+if (corazonImg) {
+    corazonImg.addEventListener("click", async function () {
+        const idUsuario = localStorage.getItem("idUsuario");
+        const token = localStorage.getItem("token");
+        if (this.src.includes("me-gusta.png")) {
+            if (!token) {
+                alert("Debes tener una cuenta para votar");
+                return;
+            }
+            if (idUsuario && idHistoria) {
+                try {
+                    const res = await fetch(API_URL + "/historia/voto", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": token
+                        },
+                        body: JSON.stringify({
+                            historia: { id: idHistoria },
+                            usuario: { id: idUsuario }
+                        })
+                    });
+                    if (res.status === 400) {
+                        alert("Debes verificar tu correo electrónico para votar.");
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Error al registrar el voto:", e);
+                }
+            }
+            this.src = "Imagenes/corazon.png";
+        } else {
+            // Si está en corazon.png, eliminar el voto
+            if (!token) {
+                alert("Debes tener una cuenta para quitar el voto");
+                return;
+            }
+            if (idUsuario && idHistoria) {
+                try {
+                    await fetch(`${API_URL}/historia/voto/${idUsuario}/${idHistoria}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Authorization": token
+                        }
+                    });
+                } catch (e) {
+                    console.error("Error al eliminar el voto:", e);
+                }
+            }
+            this.src = "Imagenes/me-gusta.png";
+        }
+    });
+}
+
+
+

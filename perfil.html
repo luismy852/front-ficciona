@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Autor</title>
-    <link rel="stylesheet" href="style/logeado.css">
-     <link rel="shortcut icon" href="Imagenes/Ficciona-logo.png" type="image/x-icon">
+    <title>Ficciona</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="Imagenes/Ficciona-logo.png" type="image/x-icon">
 </head>
 
 <body>
+
     <header>
-        <div id="headerLogueado">
-            <a href=" index.html">
+        <div id="headerLogueado" style="display: none;">
+            <a href="index.html">
                 <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
             </a>
 
@@ -30,6 +33,26 @@
             <a class="registrarse__header" id="cerrarSesionBtn">Cerrar sesión</a>
             <button id="menuToggleLogueado" class="menu__toggle">☰</button>
         </div>
+
+        <div id="headerAnonimo" style="display: none;">
+            <a href="index.html">
+                <img class="logo__header" src="Imagenes/Ficciona-logo.png" alt="">
+            </a>
+
+            <a class="boton__header" href="explorar.html">
+                Explorar
+            </a>
+            <img class="flecha" src="Imagenes/flecha.png" alt="">
+            <textarea class="textarea__header" name=""></textarea>
+            <button class="boton__buscar" id="">
+                <img class="imagen__lupa" src="Imagenes/lupa.png" alt="">
+            </button>
+            <a class="boton__header" href="login.html">Iniciar Sesion</a>
+            <a class="registrarse__header" href="registro.html">Registrarse</a>
+            <button id="menuToggleAnonimo" class="menu__toggle">☰</button>
+        </div>
+
+
         <!-- Botón hamburguesa visible solo en móvil -->
 
 
@@ -41,51 +64,32 @@
             <button id="cerrarSesionMovil">Cerrar sesión</button>
         </div>
 
+        <div id="menuMovilAnonimo" class="menu-movil">
+            <a href="explorar.html">Explorar</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="registro.html">Registrarse</a>
+        </div>
+
+
     </header>
 
     <main>
 
-        <a href="panel.html" class="volver">Volver</a>
-
-        <div class="contenedor__crear">
-            <!-- Vista previa de la imagen -->
-
-            <img id="preview" src="Imagenes/predefinido.png" alt="Vista previa">
-
-            <form id="creacionNueva">
-                <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo" required>
-
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
-
-                <label for="categoria">Categoría:</label>
-                <select id="categoria" name="categoria">
-                    <option value="DRAMA">Drama</option>
-                    <option value="ROMANCE">Romance</option>
-                    <option value="TERROR">Terror</option>
-                    <option value="CIENCIA_FICCION">Ciencia Ficción</option>
-                    <option value="THRILLER">Thriller</option>
-                </select>
-
-                <label for="imagen">Subir imagen:</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*">
-                <p class="recomendacion">Formato recomendado: usa una relación de aspecto 2:3 (como 800×1200 px) para mantener coherencia en las portadas de Ficcióna.</p>
-
-                <button type="submit">Crear</button>
-            </form>
-
-        </div>
-
-
+        <h1 class="autor__perfil"">Usuario</h1>
 
         <div class="linea__separadora__contenedor">
             <hr class="linea__separadora">
         </div>
 
+        <div class="secciones">
+            <h2 class="titulo__secciones" id="tituloGenero">Historias</h2>
+        </div>
+        <div id="galeriaGenero">
 
+        <div class="linea__separadora__contenedor">
+            <hr class="linea__separadora">
+        </div>
     </main>
-
 
     <footer>
  
@@ -94,7 +98,9 @@
         </div>
 
         <div class="footer__redes">
-            <img class="footer__iconos" src="Imagenes/instagram.png" alt="">
+            <a href="https://www.instagram.com/ficciona.co/">
+                <img class="footer__iconos" src="Imagenes/instagram.png" alt="">
+            </a>
             <img class="footer__iconos2" src="Imagenes/tik-tok.png" alt="">
         </div>
 
@@ -103,8 +109,8 @@
         </div>
 
     </footer>
+    <script type="module" src="js/perfil.js"></script>
 
-    <script type="module" src="js/crearhistoria.js"></script>
 </body>
 
 </html>

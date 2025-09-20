@@ -50,7 +50,7 @@ const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
     btn.addEventListener("click", () => {
       localStorage.removeItem("token");
       localStorage.removeItem("idUsuario");
-      window.location.href = "index.html"; // Redirige a index.html
+      window.location.reload(); // O redirecciona a login si prefieres
     });
   }
 });
@@ -85,65 +85,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const res = await fetch(API_URL + "/historia/reto/ranking");
+        const ranking = await res.json();
+        const contenedor = document.querySelector(".ranking__reto__contenedor");
+        if (!contenedor) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const usuarioId = localStorage.getItem("idUsuario");
-    const token = localStorage.getItem("token");
+        // Limpiar el contenedor antes de agregar los rankings
+        contenedor.innerHTML = "";
 
-    if (!usuarioId || !token) {
-        console.warn("⚠️ Usuario no autenticado");
-        return;
-    }
+        ranking.forEach((historia, idx) => {
+            const div = document.createElement("div");
+            div.classList.add("ranking__reto");
 
-    fetch(API_URL + `/progreso/${usuarioId}`, {
-        headers: {
-            Authorization: token
-        }
-    })
-        .then(res => {
-            if (!res.ok) throw new Error("Error al obtener lecturas");
-            return res.json();
-        })
-        .then(data => {
-            const main = document.querySelector("main");
+            div.innerHTML = `
+                <p class="ranking">#${idx + 1}</p>
+                <img class="ranking__imagen" src="${API_URL}/uploads/${historia.portada}" alt="">
+                <div class="ranking__historia">
+                    <h2 class="ranking__titulo">${historia.titulo}</h2>
+                    <a class="ranking__autor" href="perfil.html?id=${historia.idAutor}">${historia.autor}</a>
+                    <p class="ranking__texto">${historia.descripcion}</p>
+                    <a class="ranking__boton" href="libro.html?id=${historia.id}">Leer</a>
+                </div>
+            `;
+            // Manejo de error de imagen
+            const img = div.querySelector(".ranking__imagen");
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = "Imagenes/predefinido.png";
+            };
 
-            if (!data.length) {
-                const sinLecturas = document.createElement("p");
-                sinLecturas.textContent = "No tienes lecturas en progreso.";
-                sinLecturas.classList.add("sinlectura");
-                main.appendChild(sinLecturas);
-                return;
-            }
-
-            // Crear un contenedor general para todas las lecturas
-            const contenedor = document.createElement("div");
-            contenedor.classList.add("lectura");
-            contenedor.id = `galeriaGenero`; // o algún valor único del objeto
-
-
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.classList.add("portada");
-                link.href = `capitulo.html?id=${item.historiaId}&capitulo=${item.capituloId}`;
-
-                const img = document.createElement("img");
-                const nombreArchivo = item.portada.split("\\").pop(); // Corregir ruta de archivo
-                img.src = `${API_URL}/uploads/${nombreArchivo}`;
-                img.alt = item.tituloHistoria;
-                img.classList.add("portada");
-
-                link.appendChild(img);
-                contenedor.appendChild(link);
-
-                            img.onerror = function () {
-    this.onerror = null;
-    this.src = "/Imagenes/predefinido.png";
-};
-            });
-
-            main.appendChild(contenedor);
-        })
-        .catch(err => {
-            console.error("❌ Error al cargar lecturas:", err.message);
+            contenedor.appendChild(div);
         });
+    } catch (e) {
+        const contenedor = document.querySelector(".ranking__reto__contenedor");
+        if (contenedor) {
+            contenedor.innerHTML = "<p>No se pudo cargar el ranking del reto.</p>";
+        }
+    }
 });
+
+

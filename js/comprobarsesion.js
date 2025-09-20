@@ -87,6 +87,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Cargar las portadas de las historias al cargar la página
+
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const respuesta = await fetch(API_URL + "/historia/reto/random?page=0&size=5");
+        if (!respuesta.ok) {
+            throw new Error("No se pudieron cargar las portadas");
+        }
+
+        const resultado = await respuesta.json();
+        const historias = resultado.content || [];
+        const galeria = document.getElementById("galeriaReto");
+
+        if (historias.length === 0) {
+            galeria.innerHTML = "<p>No hay historias aún.</p>";
+            return;
+        }
+
+        historias.forEach(historia => {
+            const nombreArchivo = historia.portada ? historia.portada.split("\\").pop() : "";
+
+            const enlace = document.createElement("a");
+            enlace.href = `libro.html?id=${historia.id}`;
+            enlace.classList.add("enlacePortada");
+
+            const img = document.createElement("img");
+            img.src = API_URL + `/uploads/${nombreArchivo}`;
+            img.alt = historia.titulo;
+            img.classList.add("portada");
+
+            enlace.appendChild(img);
+            galeria.appendChild(enlace);
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = "/Imagenes/predefinido.png";
+            };
+        });
+    } catch (error) {
+        document.getElementById("galeriaPortadas").innerHTML = `<p class="error">${error.message}</p>`;
+    }
+
+    function extraerNombreArchivo(ruta) {
+        return ruta.split("\\").pop();
+    }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         const respuesta = await fetch(API_URL + "/historia/ult");
