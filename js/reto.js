@@ -86,6 +86,20 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", async function () {
+    // Obtener datos del reto y actualizar título y descripción
+    try {
+        const res = await fetch(API_URL + "/historia/retocompleto");
+        const data = await res.json();
+        if (data && data.nombreReto && data.descripcion) {
+            const tituloReto = document.querySelector(".crear__reto__titulo");
+            const descripcionReto = document.getElementById("descripcionReto");
+            if (tituloReto) tituloReto.textContent = data.nombreReto;
+            if (descripcionReto) descripcionReto.textContent = data.descripcion;
+        }
+    } catch (e) {
+        // Silenciar error si no hay reto
+    }
+
     try {
         const res = await fetch(API_URL + "/historia/reto/ranking");
         const ranking = await res.json();
