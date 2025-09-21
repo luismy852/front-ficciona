@@ -921,6 +921,19 @@ header {
 .ranking__boton{
     width: 40%;
 }
+
+.titulo__panel{
+    font-size: 50px;
+}
+
+.descripcion__panel{
+    font-size: 24px;
+}
+
+.capitulos__texto{
+    font-size: 50px;
+}
+
 }
 
 @media (max-width: 500px) {
