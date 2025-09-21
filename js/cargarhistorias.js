@@ -59,8 +59,21 @@ const btnCerrarMovil = document.getElementById("cerrarSesionMovil");
 
 
 
-fetch(API_URL + "/historia/" + localStorage.getItem("idUsuario"))
-    .then(response => response.json())
+fetch(API_URL + "/historia/panel/" + localStorage.getItem("idUsuario"), {
+    headers: {
+        "Authorization": `Bearer ${token}`
+    }
+})
+    .then(response => {
+        if (response.status === 403) {
+            alert("Tu sesión ha terminado. Por favor inicia sesión nuevamente.");
+            localStorage.removeItem("token");
+            localStorage.removeItem("idUsuario");
+            window.location.href = "login.html";
+            return Promise.reject("Sesión terminada");
+        }
+        return response.json();
+    })
     .then(data => {
         const contenedor = document.getElementById("contenedorHistorias");
 
