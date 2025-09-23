@@ -72,24 +72,23 @@
 
     <main>
 
-        <div class="linea__separadora__contenedor">
-            <hr class="linea__separadora">
-        </div>
+  
 
-        <form class="registro" id="registroForm">
+        <form class="registro" id="recuperacionForm">
 
-            <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" required>
+        
+            <h2 class="solicitud__correo__recuperacion">Solicita tu código de recuperación</h2>
+            
+            <label for="emial">Correo electrónico:</label>
+            <input type="email" id="correoR" required>
 
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" required>
+            <label for="email">Repetir Correo electrónico:</label>
+            <input type="email" id="correoRTwo" required>
 
             <p id="errorMensaje" class="error"></p>
 
-            <button type="submit">Ingresar</button>
+            <button type="submit">Enviar código de recuperación</button>
         </form>
-
-        <a class="olvido" href="recuperacion.html">¿Ólvido su contraseña?</a>
 
         <div class="linea__separadora__contenedor">
             <hr class="linea__separadora">
@@ -117,7 +116,7 @@
     </footer>
 
 
-    <script type="module" src="js/login.js"></script>
+    <script type="module" src="js/recuperacion.js"></script>
 
 </body>
 
